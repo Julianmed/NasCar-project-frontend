@@ -4,8 +4,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class VehicleService {
-  public API = 'http://localhost:3000';
-  public VEHICLE_API = this.API + '/api/vehicles';
+  public VEHICLE_API = 'https://nascar-backend.herokuapp.com/api/vehicles';
 
   constructor(private http: HttpClient) {
   }
