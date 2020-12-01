@@ -23,9 +23,7 @@ export class NavbarComponent  {
     }
     catch (error) {
       console.log(error);
-    } 
-
-    
+    }
   }
 
 }
