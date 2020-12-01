@@ -10,11 +10,11 @@ export class OwnerService {
   constructor(private http: HttpClient) {
   }
   getAll(): Observable<any> {
-    return this.http.get(this.OWNER_API+"/get");
+    return this.http.get(this.OWNER_API+"/get/");
   }
 
   get(id: string) {
-    return this.http.get(this.OWNER_API + '/get' + id);
+    return this.http.get(this.OWNER_API + '/get/' + id);
   }
 
   createUser(owner: any): Observable<any>{
@@ -28,13 +28,13 @@ export class OwnerService {
   }
 
   createToken(token): Observable<any>{
-    this.http.post(this.OWNER_API+'/token', token);
+    this.http.post(this.OWNER_API+'/token/', token);
     return
   }
 
   update(owner: any): Observable<any>{
     let result: Observable<Object>;
-    result = this.http.put(this.OWNER_API + '/' + owner.userID, owner);
+    result = this.http.put(this.OWNER_API + '/' + owner._id, owner);
     return result;
   }
 
