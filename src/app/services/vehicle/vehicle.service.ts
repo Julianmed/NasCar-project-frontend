@@ -44,6 +44,12 @@ export class VehicleService {
     return result;
   }
 
+  updateVehicle(vehicle: any): Observable<any>{
+    let result: Observable<Object>;
+    result = this.http.put(this.VEHICLE_API+"/"+vehicle._id, vehicle);
+    return result;
+  }
+
   remove(href: string) {
     return this.http.delete(href);
   }
