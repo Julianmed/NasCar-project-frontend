@@ -2,42 +2,42 @@
 <div class="card">
     <div class="row">
         <div class="col-md-6 mx-auto mt-5">
-            <form #ownerForm="ngForm" (ngSubmit)="updateVehicle(ownerForm.value)"> >
+            <form #ownerForm="ngForm" (ngSubmit)="updateVehicle(ownerForm.value)">
                 <div class="form-group">
                     <h3>Editar información de {{owner.fname}}.</h3>
                     <br>
                     <label for="_id"><strong>Número de identificación</strong></label>
-                    <input type="text" [(ngModel)]="owner._id" class="form-control"  [ngModelOptions]="{standalone:true}" id="_id" require="true">
+                    <input type="text" [(ngModel)]="owner._id" class="form-control"   name="_id" require="true">
                         <br>
                     
                     <label for="fname"><strong>Nombres</strong></label>
-                    <input type="text" [(ngModel)]="owner.fname" class="form-control" id="fname" [ngModelOptions]="{standalone:true}" required="true">
+                    <input type="text" [(ngModel)]="owner.fname" class="form-control" name="fname"  required="true">
                         <br>
             
                     <label for="lname"><strong>Apellidos</strong></label>
-                    <input type="text" [(ngModel)]="owner.lname" class="form-control" id="lname" [ngModelOptions]="{standalone:true}" required="true">
+                    <input type="text" [(ngModel)]="owner.lname" class="form-control" name="lname"  required="true">
                         <br>
             
                     <label for="cellphone"><strong>Celular</strong></label>
-                    <input type="number" [(ngModel)]="owner.cellphone" class="form-control" id="cellphone" [ngModelOptions]="{standalone:true}" required="true">
+                    <input type="number" [(ngModel)]="owner.cellphone" class="form-control" name="cellphone"  required="true">
                         <br>
             
                     <label for="landline"><strong>Telefono fijo</strong></label>
-                    <input type="number" [(ngModel)]="owner.landline" class="form-control" [ngModelOptions]="{standalone:true}" id="landline">
+                    <input type="number" [(ngModel)]="owner.landline" class="form-control"  name="landline">
                         <br>
             
                     <label for="email"><strong>Email</strong></label>
-                    <input type="text" [(ngModel)]="owner.email" class="form-control" id="email" [ngModelOptions]="{standalone:true}" required="true">
+                    <input type="text" [(ngModel)]="owner.email" class="form-control" name="email"  required="true">
                         <br>
             
                     <label for="vehicles"><strong>Placa de vehículo(s)</strong></label>
                     <!--AQUÍ SE DEBE HACER UN ngFor PARA MOSTRAR LOS VEHICULOS.-->
-                    <input type="text" [(ngModel)]="owner.vehicles" class="form-control" id="license_plate" required="true" [ngModelOptions]="{standalone:true}" >
+                    <input type="text" [(ngModel)]="owner.vehicles" class="form-control" name="vehicles" required="true"  >
                         <button [disabled]="true" type="button" id="addVehicle"
                             class="btn btn-primary btn-sm">Agregar otro vehículo</button>
                         <hr>
                     <button type="submit" class="btn btn-success btn-sm">Actualizar información</button>
-                    <button type="button" class="btn btn-danger btn-sm ml-5" [routerLink]="tasks">Cancelar</button>
+                    <button class="btn btn-danger btn-sm ml-5" routerLink="tasks">Cancelar</button>
                 </div>
             </form>
         </div>

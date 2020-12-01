@@ -20,25 +20,21 @@ export class EditOwnerComponent implements OnInit {
 
   ngOnInit(){
     this.sub = this.activatedRoute.params.subscribe(params => {
-      console.log("cedula",params);
       const id = params.dni;
-      console.log("cedula2",id)
       if(id) {
         this.ownerService.get(id).subscribe((owner: any) =>{
           if(owner) {
             this.owner = owner;
-            console.log(owner);
           }else{
             console.log('Owner no found.')
           }
-          
         })
       }
     });
   }
 
   updateVehicle(form: NgForm){
-    console.log(form);
+    console.log("el owner es: ",form);
     this.ownerService.update(form).subscribe(result =>{
       console.log(result);
     });
