@@ -7,21 +7,6 @@ export class AuthService {
 
   constructor(public afAuth: AngularFireAuth) { }
 
-  async loginGoogle(){
-    try {
-      return this.afAuth.signInWithPopup(new auth.GoogleAuthProvider());
-    }
-    catch (error){ console.log(error); }
-  }
-
-  /*async loginFacebook(){
-    try {
-      return this.afAuth.signInWithPopup(new auth.FacebookAuthProvider());
-    }
-    catch (error){ console.log(error); }
-  }*/
-
-
   async resetPassword(email: string):Promise<void> {
     try {
       return this.afAuth.sendPasswordResetEmail(email);

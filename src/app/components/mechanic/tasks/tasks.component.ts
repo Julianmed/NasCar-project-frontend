@@ -13,7 +13,9 @@ import { OwnerService } from '../../../services/owner/owner.service';
 export class TasksComponent implements OnInit {
   state: string;
   stateOfVehicle: string[] = ['diagnosticando', 'reparando', 'listo'];
-  status = 1;
+  status: number;
+  placa: string;
+
   constructor(
     private vehicleSrv:VehicleService, 
     private router: Router,
@@ -43,15 +45,15 @@ export class TasksComponent implements OnInit {
   };
 
   editeVehicle(){
-    const placa = (<HTMLInputElement> document.getElementById('placa')).value;
-    if(!placa){
+    this.placa = (<HTMLInputElement> document.getElementById('placa')).value;
+    if(!this.placa){
       alert("Para editar un vehículo es necesario que ingrese una placa.")
     }
     else{
-      console.log("placa",placa)
-      this.vehicleSrv.verifyPlaca(placa).subscribe((validate: boolean)=>{
+      console.log("placa",this.placa)
+      this.vehicleSrv.verifyPlaca(this.placa).subscribe((validate: boolean)=>{
         if(validate){
-          this.router.navigate(['mechanic/vehicle/edit/'+placa]);
+          this.router.navigate(['mechanic/vehicle/edit/'+this.placa]);
         }
         else{
           alert("El número de la placa ingresado no existe en el sistema")
@@ -61,8 +63,22 @@ export class TasksComponent implements OnInit {
   }
 
   updateVehicleStatus(){
-    const state = (<HTMLInputElement> document.getElementById('state')).value;
-    console.log("state ",state)
+    this.state = (<HTMLInputElement> document.getElementById('state')).value;
+    console.log("state: ",this.state)
+    this.vehicleSrv.updateStatus(this.state, this.placa).subscribe((data)=>{
+      alert(data);
+    });
   }
 
+  getModal(){
+    this.placa = (<HTMLInputElement> document.getElementById('placaId')).value;
+    console.log("placa: ",this.placa)
+    if(!this.placa){
+      alert("ingrese una placa válida por favor")
+      this.status = 0;
+    }
+    else{
+      this.status = 1;
+    }
+  }
 }

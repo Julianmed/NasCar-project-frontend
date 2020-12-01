@@ -37,6 +37,13 @@ export class VehicleService {
     return result;
   }
 
+  updateStatus(vehicleStatus: string, placa: string): Observable<any>{
+    let result: Observable<any>;
+    console.log(this.VEHICLE_API+"/vehicle-status/"+placa, {vehicleStatus});
+    result = this.http.put(this.VEHICLE_API+"/vehicle-status/"+placa, {vehicleStatus});
+    return result;
+  }
+
   remove(href: string) {
     return this.http.delete(href);
   }

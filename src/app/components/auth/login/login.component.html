@@ -15,12 +15,6 @@
                     </div>
                     <button type="submit" class="btn btn-dark btn-lg btn-block" >Iniciar sesion</button>
                 </form>
-                <!--<div (click)="onGoogleLogin()" class="form-group mt-3">
-                    <button class="btn btn-lg btn-google">Google</button>
-                </div>
-                <div (click)="onFacebookLogin()" class="form-group mt-3">
-                    <button class="btn btn-lg btn-facebook">Facebook</button>
-                </div>-->
                 <hr>
                 <div class="text-center">
                     <div class="form-group mt-3">
@@ -52,11 +46,11 @@
                                    <div class="modal-body">
                                       <label for="client"><strong>Ingrese su número de documento de identificación</strong></label>
                                       <br>
-                                      <input class="form-control" type="text" placeholder="Documento de identidad">
+                                      <input id="dni" class="form-control" type="text" placeholder="Documento de identidad">
                                    </div>
                                    <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>
-                                    <button type="button" class="btn btn-primary">Ingresar</button>
+                                    <button type="button" class="btn btn-primary" (click)="verifyOwner()" data-dismiss="modal">Ingresar</button>
                                  </div>
                                 </div>
                                 </div>
