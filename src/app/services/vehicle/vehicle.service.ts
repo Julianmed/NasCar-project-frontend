@@ -21,7 +21,11 @@ export class VehicleService {
   getAny(placa: string) {
     return this.http.get(this.VEHICLE_API+'/state/'+placa);
   }
-
+  createVehicle(vehicle: any): Observable<any> {
+    let result: Observable<Object>;
+    result = this.http.post(this.VEHICLE_API, vehicle);
+    return result;
+  }
   verifyPlaca(placa: string){
     return this.http.get(this.VEHICLE_API + '/verifyVehicle/' + placa);
   }

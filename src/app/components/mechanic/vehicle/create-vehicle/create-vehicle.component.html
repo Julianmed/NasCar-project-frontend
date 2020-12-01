@@ -2,40 +2,49 @@
 <div class="card">
     <div class="row">
         <div class="col-md-6 mx-auto mt-5">
-            <form action="">
+            <form [formGroup]="formVehicle" (ngSubmit)="registerVehicle(formVehicle.value)">
                 <div class="form-group">
                     <h3>Información del vehículo.</h3>
                     <br>
+
+                    <label for="_id"><strong>Placa</strong></label>
+                    <input formControlName="_id" type="text" class="form-control" id="_id" 
+                        placeholder="Placa del vehículo" required="true">
+                        <br>
+
                     <label for="type"><strong>Tipo de vehículo</strong></label>
                     <br>
-                    <select class="custom-select mr-sm-2" name="typeOfVehicle" id="type" required="true">
-                        <option selected>Elije un vehículo</option>
-                        <option value="type" *ngFor="let type of typeOfVehicle">{{type}}</option>
+                    <select formControlName="type" class="custom-select mr-sm-2 form-control" name="typeOfVehicle" id="type" required="true">
+                        <option *ngFor="let types of type" id="{{types}}" value="{{types}}">{{types}}</option>
                     </select>
                         <br>
                     
                     <label for="brand"><strong>Marca</strong></label>
-                    <input type="text" class="form-control" id="brand" 
+                    <input formControlName="brand" type="text" class="form-control" id="brand" 
                         placeholder="Marca del vehículo" required="true">
                         <br>
             
                     <label for="model"><strong>Modelo</strong></label>
-                    <input type="number" class="form-control" id="model" 
+                    <input formControlName="model" type="number" class="form-control" id="model" 
                         placeholder="Modelo del vehículo" required="true">
                         <br>
-            
-                    <label for="license_plate"><strong>Placa</strong></label>
-                    <input type="text" class="form-control" id="license_plate" 
-                        placeholder="Placa del vehículo" required="true">
+                    
+                    <label for="color"><strong>Color</strong></label>
+                    <input formControlName="color" type="string" class="form-control" id="color" placeholder="Color del vehículo" required="true">
+                        <br>
+
+                    <label for="repairDetails"><strong>Detalles del vehiculo</strong></label>
+                    <input formControlName="repairDetails" type="text" class="form-control" id="repairDetails" placeholder="Detalles del vehículo" required="true">
                         <br>
             
-                    <label for="owner"><strong>Propietario del vehículo</strong></label>
-                    <input type="text" class="form-control" id="owner"
+                    <label for="owners"><strong>Propietario del vehículo</strong></label>
+                    <input formControlName="owners" type="text" class="form-control" id="owners"
                         placeholder="Propietario del vehículo" required="true">
-                    <button type="button" id="addOwner" class="btn btn-primary btn-sm">Agregar otro propietario</button>
+                    <button [disabled]="true" type="button" id="addOwner" class="btn btn-primary btn-sm">Agregar otro propietario</button>
                         <hr>
-                    <button type="submit" class="btn btn-success btn-sm" [routerLink]="['/tasks']">Registrar vehículo</button>
-                    <button type="submit" class="btn btn-danger btn-sm ml-5" [routerLink]="['/tasks']">Cancelar</button>
+
+                    <button [disabled]="formVehicle.invalid" type="submit" class="btn btn-success btn-sm">Registrar vehículo</button>
+                    <button type="button" class="btn btn-danger btn-sm ml-5">Cancelar</button>
                 </div>
             </form>
         </div>
