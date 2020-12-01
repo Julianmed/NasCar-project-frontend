@@ -4,8 +4,7 @@ import { Observable } from 'rxjs';
 
 @Injectable({providedIn: 'root'})
 export class OwnerService {
-  public API = 'http://localhost:3000';
-  public OWNER_API = this.API + '/api/owners';
+  public OWNER_API = 'https://nascar-backend.herokuapp.com/api/owners';
 
   constructor(private http: HttpClient) {
   }
