@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
+import { OwnerService } from 'src/app/services/owner/owner.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-owner',
@@ -6,11 +9,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./create-owner.component.scss']
 })
 export class CreateOwnerComponent implements OnInit {
+
+  formOwner: FormGroup
   placas = [];
-  addPlaca(newPlaca: string) {
-    if (newPlaca) {
-      this.placas.push(newPlaca);
-    }
+  
+  constructor(
+    private formBuilder: FormBuilder,
+    private ownerService: OwnerService,
+    private router: Router
+  ) {
+    this.formOwner = this.formBuilder.group({
+      _id: ['', Validators.required],
+      fname: ['', Validators.required],
+      lname: ['', Validators.required],
+      cellphone: ['', Validators.required],
+      landline: [''],
+      email: ['', Validators.compose([Validators.email, Validators.required])],
+      vehicles: ['', Validators.required]
+    })
+  }
+
+  ngOnInit(): void {
   }
 
   removePlaca(){
@@ -21,9 +40,18 @@ export class CreateOwnerComponent implements OnInit {
     
   }
 
-  constructor() { }
+  addPlaca(newPlaca: string) {
+    if (newPlaca) {
+      this.placas.push(newPlaca);
+    }
+  }
 
-  ngOnInit(): void {
+  registerOwner(values){
+    console.log(this.formOwner.value);
+    this.ownerService.createUser(this.formOwner.value).subscribe(resultado => {
+      console.log(resultado);      
+    });
+    this.router.navigate(['tasks']);
   }
 
 }

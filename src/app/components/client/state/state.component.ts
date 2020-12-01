@@ -31,7 +31,7 @@ export class StateComponent implements OnInit {
 
   ngOnInit(){
     this.route.queryParams.subscribe(params => {
-      this.token = params['token'];
+      this.token = params['params'];
       console.log("Este es el token",this.token);
     });
     console.log(this.vehicleState);
