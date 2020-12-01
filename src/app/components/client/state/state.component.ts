@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { Subscription } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 import { VehicleService } from '../../../services/vehicle/vehicle.service';
@@ -11,9 +9,6 @@ import { VehicleService } from '../../../services/vehicle/vehicle.service';
   styleUrls: ['./state.component.scss']
 })
 export class StateComponent implements OnInit {
-  //sub: Subscription;
-  //vehicleState = "hola";
-  //authorization = "aceptada";
   vehicleState: string;
   authorization: string;
   placa: string;

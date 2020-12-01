@@ -39,7 +39,10 @@ export class QuotationComponent implements OnInit {
   }
 
   reject(){
-
+    this.vehicleSrv.updateAuthorization("rechazado", this.placa).subscribe((respuesta:any)=>{
+      alert("¡Sentimos que rechazaras la cotización!\n Aún así esperamos que tengas un buen día :)");
+      this.router.navigate(['state']);
+    });
   }
 
 }

@@ -24,6 +24,7 @@ export class OwnerService {
   }
 
   verifyId(dni: string){
+    console.log("buscar este dni ",dni);
     return this.http.get(this.OWNER_API + '/verifyOwner/' + dni);
   }
 
