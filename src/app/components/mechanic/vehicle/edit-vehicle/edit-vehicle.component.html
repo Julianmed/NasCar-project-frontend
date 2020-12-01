@@ -1,0 +1,36 @@
+<br>
+<div class="card">
+    <div class="row">
+        <div class="col-md-6 mx-auto mt-5">
+            <form action="">
+                <div class="form-group">
+                    <h3>Información del vehículo.</h3>
+                    <br>
+                    <label for="type"><strong>Tipo de vehículo</strong></label>
+                    <br>
+                    <input type="text" class="form-control" id="type" required="true">
+                        <br>
+                    
+                    <label for="brand"><strong>Marca</strong></label>
+                    <input type="text" class="form-control" id="brand" required="true">
+                        <br>
+            
+                    <label for="model"><strong>Modelo</strong></label>
+                    <input type="number" class="form-control" id="model" required="true">
+                        <br>
+            
+                    <label for="license_plate"><strong>Placa</strong></label>
+                    <input type="text" class="form-control" id="license_plate" required="true">
+                        <br>
+            
+                    <label for="owner"><strong>Propietario del vehículo</strong></label>
+                    <input type="text" class="form-control" id="owner" required="true">
+                    <button type="button" id="addOwner" class="btn btn-primary btn-sm">Agregar otro propietario</button>
+                        <hr>
+                    <button type="submit" class="btn btn-success btn-sm" [routerLink]="['/tasks']">Actualizar vehículo</button>
+                    <button type="submit" class="btn btn-danger btn-sm ml-5" [routerLink]="['/tasks']">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

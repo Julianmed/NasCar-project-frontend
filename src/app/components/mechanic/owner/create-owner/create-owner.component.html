@@ -1,0 +1,70 @@
+<br>
+<div class="card col-md-8 mx-auto">
+    <div class="row">
+        <div class="col-md-6 mx-auto mt-5">
+            <form #ownerForm="ngForm">
+                <div class="form-group">
+                    <h3>Información del cliente.</h3>
+                    <br>
+                    <label for="idOwner"><strong>Número de identificación</strong></label>
+                    <input type="text" class="form-control" id="idOwner"
+                        placeholder="Ingresé el número de identificación del cliente" require="true">
+                        <br>
+                    
+                    <label for="fname"><strong>Nombres</strong></label>
+                    <input type="text" class="form-control" id="fname" 
+                        placeholder="Nombres del propietario" required="true">
+                        <br>
+            
+                    <label for="lname"><strong>Apellidos</strong></label>
+                    <input type="text" class="form-control" id="lname" 
+                        placeholder="Apellidos del propietario" required="true">
+                        <br>
+            
+                    <label for="cellphone"><strong>Celular</strong></label>
+                    <input type="tel" class="form-control" id="cellphone"
+                        placeholder="Celular del propietario" required="true">
+                        <br>
+            
+                    <label for="landline"><strong>Telefono fijo</strong></label>
+                    <input type="tel" class="form-control" id="landline"
+                        placeholder="Telefono fijo del propietario">
+                        <br>
+            
+                    <label for="email"><strong>Email</strong></label>
+                    <input type="email" class="form-control" id="email" 
+                        placeholder="Email del propietario" required="true">
+                        <br>
+            
+                    <label for="license_plate"><strong>Placa de vehículo</strong></label>
+                        <div class="container">
+                            <div class="row">
+                                <div class="control-group" id="fields">
+                                    <div class="controls"> 
+                                        <form role="form" autocomplete="off">
+                                            <div class="entry input-group col-xs-3">
+                                                <input #newPlaca (keyup.enter)="addPlaca(newPlaca.value)"
+                                                (blur)="addPlaca(newPlaca.value); newPlaca.value='' " class="form-control" placeholder="Placa del vehículo">
+                                                <span class="input-group-btn">
+                                                    <button (click)="addPlaca(newPlaca.value)" class="btn btn-primary btn-add">Agregar vehículo</button>
+                                                </span>
+                                            </div>
+                                            <ul class="list-group list-group-flush col-5">
+                                                <div class="text-center">
+                                                    <li class="mt-2 list-group-item mb-2" *ngFor="let placa of placas">{{placa}}<button class="btn btn-danger btn-sm mt-2" (click)="removePlaca()">Eliminar</button></li>                                                       
+                                                </div>                                          
+                                            </ul>
+                                        </form>
+                                        <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                    <button type="submit" class="btn btn-success " (submit)="ownerForm.reset()" [routerLink]="['/tasks']">Registrar</button>
+                    <button type="submit" class="btn btn-danger  ml-5" [routerLink]="['/tasks']">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

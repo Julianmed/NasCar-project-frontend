@@ -1,0 +1,66 @@
+<div class="col-md-6 mx-auto mt-5">
+   <div class="card">
+      <div class="container"> 
+         <h2 class="text-center mt-4"> Área de Trabajo</h2>
+         <div class="row">
+            <button class="btn btn-dark btn-sm ml-4" [routerLink]="['/mechanic/owner/create']">Agregar Cliente</button>              
+         </div>
+         <br>
+         <label for="">Editar información del cliente:</label>
+         <div class="input-group">
+            <input id="dni" type="text" class="form-control" placeholder="Número de documento de identidad" >
+            <div class="input-group-append">
+              <button class="btn btn-outline-primary btn-sm" type="button" (click)="editeOwner()">Editar</button>
+            </div>
+          </div>
+         <br>
+
+         <div class="row mt-5">
+            <button class="btn btn-dark btn-sm ml-4" [routerLink]="['/mechanic/vehicle/create']">Agregar Vehículo</button>
+         </div>
+         
+         <br>
+        
+         <label for="">Editar Información del Vehículo:</label>
+         <div class="input-group">
+            <input id="placa" type="text" class="form-control" placeholder="Placa" >
+            <div class="input-group-append">
+              <button class="btn btn-outline-primary btn-sm" type="button" (click)="editeVehicle()">Editar</button>
+            </div>
+          </div>
+         <br>
+         <label for="">Editar Estado del Vehiculo:</label>
+         <div class="input-group mb-4">
+            <input type="text" class="form-control" placeholder="Placa" >
+            <div class="input-group-append">
+               <!-- Button trigger modal -->
+              <button class="btn btn-outline-primary btn-sm" type="button"  data-toggle="modal" data-target="#stateModal">Editar</button>
+            </div>
+         </div>
+         <!-- Modal -->
+         <div class="modal fade" id="stateModal" tabindex="-1" role="dialog" aria-labelledby="stateModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+               <div class="modal-header">
+                  <h5 class="modal-title" id="stateModalLabel">Modificar estado</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+               </div>
+               <div class="modal-body">
+                  <label for="state"><strong>Seleccione el estado de vehículo</strong></label>
+                  <br>
+                  <select class="custom-select mr-sm-2" name="stateOfVehicle" id="state" required="true">
+                     <option *ngFor="let state of stateOfVehicle" id="{{state}}">{{state}}</option>
+                  </select>
+               </div>
+               <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>
+                  <button type="button" class="btn btn-primary" (click)="updateVehicleStatus()">Actualizar</button>
+               </div>
+            </div>
+            </div>
+         </div>
+        </div>     
+    </div>    
+</div>

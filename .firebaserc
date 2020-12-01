@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "login-ng-10777": {
+      "hosting": {
+        "loginFull": [
+          "login-ng-10777"
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+<br>
+<div class="card">
+    <div class="row">
+        <div class="col-md-6 mx-auto mt-5">
+            <form action="">
+                <div class="form-group">
+                    <h3>Editar información del cliente.</h3>
+                    <br>
+                    <label for="idOwner"><strong>Número de identificación</strong></label>
+                    <input type="text" class="form-control" id="idOwner" require="true">
+                        <br>
+                    
+                    <label for="fname"><strong>Nombres</strong></label>
+                    <input type="text" class="form-control" id="fname" required="true">
+                        <br>
+            
+                    <label for="lname"><strong>Apellidos</strong></label>
+                    <input type="text" class="form-control" id="lname" required="true">
+                        <br>
+            
+                    <label for="cellphone"><strong>Celular</strong></label>
+                    <input type="number" class="form-control" id="cellphone" required="true">
+                        <br>
+            
+                    <label for="landline"><strong>Telefono fijo</strong></label>
+                    <input type="number" class="form-control" id="landline">
+                        <br>
+            
+                    <label for="email"><strong>Email</strong></label>
+                    <input type="text" class="form-control" id="email" required="true">
+                        <br>
+            
+                    <label for="license_plate"><strong>Placa de vehículo</strong></label>
+                    <!--AQUÍ SE DEBE HACER UN ngFor PARA MOSTRAR LOS VEHICULOS.-->
+                    <input type="text" class="form-control" id="license_plate" required="true"
+                        placeholder="Placa de vehículo(s) del propietario">
+                        <button type="button" id="addVehicle"
+                            class="btn btn-primary btn-sm">Agregar otro vehículo</button>
+                        <hr>
+                    <button type="submit" class="btn btn-success btn-sm">Actualizar información</button>
+                    <button type="submit" class="btn btn-danger btn-sm ml-5">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
