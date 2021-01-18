@@ -36,6 +36,9 @@
               <button class="btn btn-dark btn-sm" type="button"  data-toggle="modal" (click)="getModal()" data-target="#stateModal">Actualizar</button>
             </div>
          </div>
+         <div class="row mt-5">
+            <button class="btn btn-danger btn-sm ml-3" [routerLink]="['/profile']">Volver</button>
+         </div>
          <!-- Modal -->
          <div *ngIf="status==1" class="modal fade" id="stateModal" tabindex="-1" role="dialog" aria-labelledby="stateModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
