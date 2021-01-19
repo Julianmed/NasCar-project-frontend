@@ -25,6 +25,8 @@ import { ProfileComponent } from './components/mechanic/profile/profile.componen
 import { TasksComponent } from './components/mechanic/tasks/tasks.component';
 import { CreateEmployeeComponent } from './components/managerAssistant/employee/create-employee/create-employee.component';
 import { EditEmployeeComponent } from './components/managerAssistant/employee/edit-employee/edit-employee.component';
+import { RegisterOwnerVehicleComponent } from './components/mechanic/register-owner-vehicle/register-owner-vehicle.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,7 @@ import { EditEmployeeComponent } from './components/managerAssistant/employee/ed
     TasksComponent,
     CreateEmployeeComponent,
     EditEmployeeComponent,
+    RegisterOwnerVehicleComponent,
   ],
   imports: [
     BrowserModule,

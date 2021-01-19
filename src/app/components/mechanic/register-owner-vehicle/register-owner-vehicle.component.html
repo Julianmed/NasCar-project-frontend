@@ -1,0 +1,76 @@
+<div class="col-sm-12 mx-auto mt-5">
+    <div class="card">
+        <div class="container">
+            <h3 class="text-center mt-4">Formulario cliente</h3>
+            <hr>
+            <form [formGroup]="formOwnerVehicle" (ngSubmit)="registerOwnerVehicle(formOwnerVehicle.value)">
+                <div class="form-group">
+                    <div class="row">
+                        <div class="col">
+                            <h3>Información del propietario</h3>
+                            <hr>
+                            <label for="_id"><strong>Número de identificación</strong></label>
+                            <input formControlName="_id" type="text" class="form-control" id="_id" placeholder="Ingrese el número de identificación del cliente" required="true">
+                            <br>
+
+                            <label for="fname"><strong>Nombres</strong></label>
+                            <input formControlName="fname" type="text" class="form-control" id="fname" placeholder="Ingrese los nombres del propietario" required="true">
+                            <br>
+                            <!--VALIDACIONES PENDIENTES-->
+
+                            <label for="lname"><strong>Apellidos</strong></label>
+                            <input formControlName="lname" type="text" class="form-control" id="lname" placeholder="Ingrese los apellidos del propietario" required="true">
+                            <br>
+
+                            <label for="cellphone"><strong>Celular</strong></label>
+                            <input formControlName="cellphone" type="text" class="form-control" id="cellphone" placeholder="Ingrese el celular del propietario" required="true">
+                            <br>
+
+                            <label for="landline"><strong>Telefono fijo</strong></label>
+                            <input formControlName="landline" type="text" class="form-control" id="landline" placeholder="Ingrese el telefono fijo del propietario">
+                            <br>
+
+                            <label for="email"><strong>Email</strong></label>
+                            <input formControlName="email" type="text" class="form-control" id="email" placeholder="Ingrese el email del propietario" required="true">
+                            <br>
+                            <!--VALIDACIONES PENDIENTES-->
+                            
+                        </div>
+                        <div class="col">
+                            <h3>Información del vehículo</h3>
+                            <hr>
+                            <label for="placa"><strong>Placa</strong></label>
+                            <input formControlName="placa" type="text" class="form-control" id="placa" placeholder="Ingrese la placa del vehículo" required="true">
+                            <br>
+
+                            <label for="type"><strong>Seleccione el tipo de vehículo</strong></label>
+                            <select formControlName="type" class="custom-select mr-sm-2 form-control" name="typeOfVehicle" id="type" required="true">
+                                <option *ngFor="let types of type" [value]="types" id="{{types}}">{{types}}</option>
+                            </select>
+                            <br>
+                            <br>
+
+                            <label for="brand"><strong>Marca</strong></label>
+                            <input formControlName="brand" type="text" class="form-control" id="brand" placeholder="Ingrese la marca del vehículo" required="true">
+                            <br>
+
+                            <label for="model"><strong>Modelo</strong></label>
+                            <input formControlName="model" type="number" class="form-control" id="model" placeholder="Ingrese el modelo del vehículo" required="true">
+                            <br>
+
+                            <label for="color"><strong>Color</strong></label>
+                            <input formControlName="color" type="text" class="form-control" id="color" placeholder="Ingrese el color del vehículo" required="true">
+                            <br>
+
+                            <label for="repairDetails"><strong>Detalles del vehículo</strong></label>
+                            <input formControlName="repairDetails" type="text" class="form-control" id="repairDetails" placeholder="Ingrese los detalles del vehículo al momento de recibirlo." required="true">
+                            <br>
+                        </div>
+                    </div>                     
+                </div>
+                <button class="col text-center btn btn-success" type="submit">Realizar registro</button>     
+                <hr>
+            </form>
+        </div>
+    </div>
+</div>

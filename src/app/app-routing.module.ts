@@ -9,7 +9,7 @@ import { StateComponent } from './components/client/state/state.component';
 import { QuotationComponent } from './components/client/quotation/quotation.component';
 import { ProfileComponent } from './components/mechanic/profile/profile.component';
 import { TasksComponent } from './components/mechanic/tasks/tasks.component';
-
+import { RegisterOwnerVehicleComponent } from './components/mechanic/register-owner-vehicle/register-owner-vehicle.component';
 
 const routes: Routes = [
   {
@@ -81,6 +81,10 @@ const routes: Routes = [
   {
     path:'mechanic/vehicle/edit/:placa',
     component:EditVehicleComponent,
+  },
+  {
+    path: 'mechanic/register-owner-vehicle',
+    component: RegisterOwnerVehicleComponent,
   }
 ];
 
