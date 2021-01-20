@@ -10,6 +10,7 @@ import { QuotationComponent } from './components/client/quotation/quotation.comp
 import { ProfileComponent } from './components/mechanic/profile/profile.component';
 import { TasksComponent } from './components/mechanic/tasks/tasks.component';
 import { RegisterOwnerVehicleComponent } from './components/mechanic/register-owner-vehicle/register-owner-vehicle.component';
+import { AltaEmployeeComponent } from './components/human-res/alta-employee/alta-employee.component';
 
 const routes: Routes = [
   {
@@ -85,6 +86,10 @@ const routes: Routes = [
   {
     path: 'mechanic/register-owner-vehicle',
     component: RegisterOwnerVehicleComponent,
+  },
+  {
+    path: 'human-res/alta-employee',
+    component: AltaEmployeeComponent,
   }
 ];
 

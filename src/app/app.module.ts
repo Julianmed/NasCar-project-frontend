@@ -27,6 +27,7 @@ import { CreateEmployeeComponent } from './components/managerAssistant/employee/
 import { EditEmployeeComponent } from './components/managerAssistant/employee/edit-employee/edit-employee.component';
 import { RegisterOwnerVehicleComponent } from './components/mechanic/register-owner-vehicle/register-owner-vehicle.component';
 import { CommonModule } from '@angular/common';
+import { AltaEmployeeComponent } from './components/human-res/alta-employee/alta-employee.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { CommonModule } from '@angular/common';
     CreateEmployeeComponent,
     EditEmployeeComponent,
     RegisterOwnerVehicleComponent,
+    AltaEmployeeComponent,
   ],
   imports: [
     BrowserModule,
