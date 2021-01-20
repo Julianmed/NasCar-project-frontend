@@ -11,6 +11,9 @@ import { ProfileComponent } from './components/mechanic/profile/profile.componen
 import { TasksComponent } from './components/mechanic/tasks/tasks.component';
 import { RegisterOwnerVehicleComponent } from './components/mechanic/register-owner-vehicle/register-owner-vehicle.component';
 import { AltaEmployeeComponent } from './components/human-res/alta-employee/alta-employee.component';
+import { CreateEmployeeComponent } from './components/managerAssistant/employee/create-employee/create-employee.component';
+import { EditEmployeeProfileComponent } from './components/employee/edit-employee-profile/edit-employee-profile.component';
+import { EmployeeProfileComponent } from './components/employee/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -90,6 +93,18 @@ const routes: Routes = [
   {
     path: 'human-res/alta-employee',
     component: AltaEmployeeComponent,
+  },
+  {
+    path: 'manager/create-employee',
+    component: CreateEmployeeComponent,
+  },
+  {
+    path: 'employee-profile', //debería recibir la id del perfil según el logging
+    component: EmployeeProfileComponent,
+  },
+  {
+    path: 'employee-profile/edit',
+    component: EditEmployeeProfileComponent,
   }
 ];
 

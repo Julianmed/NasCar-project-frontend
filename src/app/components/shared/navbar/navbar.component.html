@@ -13,8 +13,12 @@
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" routerLink="/profile">Perfil de mecánico</a>
+          <a class="dropdown-item" routerLink="/human-res/alta-employee">Perfil de recursos humanos</a>
+          <a class="dropdown-item" routerLink="/manager/create-employee">Perfil asistente de gerencia</a>
+          <a class="dropdown-item" routerLink="/employee-profile">Perfil empleado</a>
           <a class="dropdown-item" routerLink="/state">Estado vehículo</a>
           <a class="dropdown-item" routerLink="/quotation/DLX668">Cotización</a>
+          
         </div>
       </div>
       <ul class="navbar-nav ml-auto" *ngIf="user$ | async as user; else login">

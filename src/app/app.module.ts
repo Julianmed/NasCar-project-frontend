@@ -28,6 +28,8 @@ import { EditEmployeeComponent } from './components/managerAssistant/employee/ed
 import { RegisterOwnerVehicleComponent } from './components/mechanic/register-owner-vehicle/register-owner-vehicle.component';
 import { CommonModule } from '@angular/common';
 import { AltaEmployeeComponent } from './components/human-res/alta-employee/alta-employee.component';
+import { EditEmployeeProfileComponent } from './components/employee/edit-employee-profile/edit-employee-profile.component';
+import { EmployeeProfileComponent } from './components/employee/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +48,8 @@ import { AltaEmployeeComponent } from './components/human-res/alta-employee/alta
     EditEmployeeComponent,
     RegisterOwnerVehicleComponent,
     AltaEmployeeComponent,
+    EditEmployeeProfileComponent,
+    EmployeeProfileComponent
   ],
   imports: [
     BrowserModule,
