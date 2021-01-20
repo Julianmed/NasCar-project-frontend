@@ -1,1 +1,73 @@
-<p>create-employee works!</p>
+<div class="col-sm-12 mx-auto mt-5">
+    <div class="card">        
+        <div class="container">
+            <h3 class="mt-4 text-uppercase text-center">Formulario de registro de empleado</h3>
+            <hr>
+            <form action="">
+                <div class="form-group">
+                    <h3 class="text-center">Información del empleado</h3>
+                    <hr>
+                    <div class="row">
+                        <div class="col">
+                            <label for="photo"><strong>Foto del empleado</strong></label>
+                            <input type="file" formControlName="photo" class="form-control" id="photo" accept=".jpg, .png, .jpeg, .gif">
+                            <br>
+
+                            <label for="_id"><strong>Número de identificación del empleado</strong></label>
+                            <input formControlName="_id" type="text" class="form-control" id="_id" placeholder="Ingrese el número de identificación del empleado" required="true">
+                            <br>
+
+                            <label for="userID"><strong>UserID del empleado</strong></label>
+                            <input type="text" formControlName="userID" class="form-control" id="userID" placeholder="Ingrese el userID del empleado" required="true">
+                            <br>
+
+                            <label for="user"><strong>Usuario del empleado</strong></label>
+                            <input type="text" formControlName="user" class="form-control" id="user" placeholder="Ingrese el usuario del empleado" required="true">
+                            <br>
+
+                            <label for="email"><strong>Email del empleado</strong></label>
+                            <input type="text" formControlName="email" class="form-control" id="email" placeholder="Ingrese el email del empleado" required="true">
+                            <br>                         
+
+                        </div>
+                        <div class="col">
+                            <label for="fname"><strong>Nombre del empleado</strong></label>
+                            <input type="text" formControlName="fname" class="form-control" id="fname" placeholder="Ingrese el nombre del empleado" required="true">
+                            <br>   
+
+                            <label for="lname"><strong>Apellidos del empleado</strong></label>
+                            <input type="text" formControlName="lname" class="form-control" id="lname" placeholder="Ingrese los apellidos del empleado" required="true">
+                            <br>
+
+                            <label for="cellphone"><strong>Celular del empleado</strong></label>
+                            <input type="text" formControlName="lname" class="form-control" id="lname" placeholder="Ingrese el celular del empleado" required="true">
+                            <br>
+
+                            <label for="landline"><strong>Teléfono fijo del empleado</strong></label>
+                            <input type="text" formControlName="lname" class="form-control" id="landline" placeholder="Ingrese el teléfono del empleado" required="true">
+                            <br>
+
+                            <label for="rol"><strong>Seleccione el rol del empleado</strong></label>
+                            <select name="rolOfEmployee" id="rol" required="true" formControlName="rol" class="custom-select mr-sm-2 form-control">
+                                <option value="">Mecánico</option>
+                            </select>
+                            <br>
+                            <br>
+
+                            <label for="profileStatus"><strong>Estado del perfil del empleado</strong></label>
+                            <select name="profileStatusEmployee" id="profileStatus" required="true" formControlName="profileStatus" class="custom-select mr-sm-2 form-control">
+                                <option value="">Inactivo</option>
+                            </select>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <a class="btn btn-danger" routerLink="/manager/profile">Cancelar registro</a>
+                    <button class="btn btn-success" type="submit">Registrar empleado</button>
+                </div>                
+                <hr>
+            </form>          
+        </div>
+    </div>
+</div>

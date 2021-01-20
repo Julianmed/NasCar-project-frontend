@@ -14,6 +14,7 @@ import { AltaEmployeeComponent } from './components/human-res/alta-employee/alta
 import { CreateEmployeeComponent } from './components/managerAssistant/employee/create-employee/create-employee.component';
 import { EditEmployeeProfileComponent } from './components/employee/edit-employee-profile/edit-employee-profile.component';
 import { EmployeeProfileComponent } from './components/employee/profile/profile.component';
+import { ProfileManagerComponent } from './components/managerAssistant/profile-manager/profile-manager.component';
 
 const routes: Routes = [
   {
@@ -105,6 +106,10 @@ const routes: Routes = [
   {
     path: 'employee-profile/edit',
     component: EditEmployeeProfileComponent,
+  },
+  {
+    path: 'manager/profile',
+    component: ProfileManagerComponent,
   }
 ];
 

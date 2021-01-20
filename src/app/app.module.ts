@@ -30,6 +30,7 @@ import { CommonModule } from '@angular/common';
 import { AltaEmployeeComponent } from './components/human-res/alta-employee/alta-employee.component';
 import { EditEmployeeProfileComponent } from './components/employee/edit-employee-profile/edit-employee-profile.component';
 import { EmployeeProfileComponent } from './components/employee/profile/profile.component';
+import { ProfileManagerComponent } from './components/managerAssistant/profile-manager/profile-manager.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { EmployeeProfileComponent } from './components/employee/profile/profile.
     RegisterOwnerVehicleComponent,
     AltaEmployeeComponent,
     EditEmployeeProfileComponent,
-    EmployeeProfileComponent
+    EmployeeProfileComponent,
+    ProfileManagerComponent
   ],
   imports: [
     BrowserModule,
