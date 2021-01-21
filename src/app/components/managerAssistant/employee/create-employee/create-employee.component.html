@@ -3,7 +3,7 @@
         <div class="container">
             <h3 class="mt-4 text-uppercase text-center">Formulario de registro de empleado</h3>
             <hr>
-            <form action="">
+            <form [formGroup]="formCreateEmployee" (ngSubmit)="registerEmployee(formCreateEmployee.value)">
                 <div class="form-group">
                     <h3 class="text-center">Información del empleado</h3>
                     <hr>
@@ -15,6 +15,7 @@
 
                             <label for="_id"><strong>Número de identificación del empleado</strong></label>
                             <input formControlName="_id" type="text" class="form-control" id="_id" placeholder="Ingrese el número de identificación del empleado" required="true">
+                                <div *ngIf="formCreateEmployee.get('_id').hasError('required') && formCreateEmployee.get('_id').touched"></div>
                             <br>
 
                             <label for="userID"><strong>UserID del empleado</strong></label>
@@ -47,16 +48,16 @@
                             <input type="text" formControlName="lname" class="form-control" id="landline" placeholder="Ingrese el teléfono del empleado" required="true">
                             <br>
 
-                            <label for="rol"><strong>Seleccione el rol del empleado</strong></label>
-                            <select name="rolOfEmployee" id="rol" required="true" formControlName="rol" class="custom-select mr-sm-2 form-control">
-                                <option value="">Mecánico</option>
+                            <label for="role"><strong>Seleccione el rol del empleado</strong></label>
+                            <select formControlName="role" class="custom-select mr-sm-2 form-control" name="rolOfEmployee" id="role" required="true">
+                                <option *ngFor="let role of roles" id="{{role}}" value="{{role}}">{{role}}</option>
                             </select>
                             <br>
                             <br>
 
                             <label for="profileStatus"><strong>Estado del perfil del empleado</strong></label>
-                            <select name="profileStatusEmployee" id="profileStatus" required="true" formControlName="profileStatus" class="custom-select mr-sm-2 form-control">
-                                <option value="">Inactivo</option>
+                            <select formControlName="profileStatus" class="custom-select mr-sm-2 form-control" name="statusOfEmployee" id="profileStatus" required="true">
+                                <option *ngFor="let status of profileStatus" id="{{status}}" value="{{status}}">{{status}}</option>
                             </select>
 
                         </div>
@@ -64,7 +65,7 @@
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
                     <a class="btn btn-danger" routerLink="/manager/profile">Cancelar registro</a>
-                    <button class="btn btn-success" type="submit">Registrar empleado</button>
+                    <button class="btn btn-success" type="submit" [disabled]="formCreateEmployee.invalid">Registrar empleado</button>
                 </div>                
                 <hr>
             </form>          
