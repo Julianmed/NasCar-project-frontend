@@ -110,6 +110,10 @@ const routes: Routes = [
   {
     path: 'manager/profile',
     component: ProfileManagerComponent,
+  },
+  {
+    path: 'employee-profile/edit/:_id',
+    component: EditEmployeeProfileComponent,
   }
 ];
 
