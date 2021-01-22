@@ -23,6 +23,7 @@ import { StateComponent } from './components/client/state/state.component';
 import { QuotationComponent } from './components/client/quotation/quotation.component';
 import { ProfileComponent } from './components/mechanic/profile/profile.component';
 import { TasksComponent } from './components/mechanic/tasks/tasks.component';
+import { RepairDetailComponent } from './components/mechanic/repair-detail/repair-detail.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { TasksComponent } from './components/mechanic/tasks/tasks.component';
     QuotationComponent,
     ProfileComponent,
     TasksComponent,
+    RepairDetailComponent,
   ],
   imports: [
     BrowserModule,
