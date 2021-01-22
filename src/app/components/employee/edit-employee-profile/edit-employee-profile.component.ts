@@ -41,5 +41,4 @@ export class EditEmployeeProfileComponent implements OnInit {
     });
     this.router.navigate(['employee-profile'])
   }
-
 }
