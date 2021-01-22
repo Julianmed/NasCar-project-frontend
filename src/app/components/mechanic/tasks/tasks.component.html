@@ -1,42 +1,43 @@
 <div class="col-md-6 mx-auto mt-5">
    <div class="card">
       <div class="container"> 
-         <h2 class="text-center mt-4"> Área de Trabajo</h2>
-         <div class="row">
-            <button class="btn btn-dark btn-sm ml-4" [routerLink]="['/mechanic/owner/create']">Agregar Cliente</button>              
-         </div>
-         <br>
-         <label for="">Editar información del cliente:</label>
+         <h2 class="text-center mt-4 text-uppercase"> Área de trabajo del mecánico</h2>
+         <hr>
+         <label for="">Actualizar información del cliente:</label>
          <div class="input-group">
-            <input id="dni" type="text" class="form-control" placeholder="Número de documento de identidad" >
+            <input id="dni" type="text" class="form-control" placeholder="Ingresé el número de identificación" >
             <div class="input-group-append">
-              <button class="btn btn-outline-primary btn-sm" type="button" (click)="editeOwner()">Editar</button>
+              <button class="btn btn-dark btn-sm" type="button" (click)="editeOwner()">Actualizar</button>
             </div>
           </div>
          <br>
-
-         <div class="row mt-5">
-            <button class="btn btn-dark btn-sm ml-4" [routerLink]="['/mechanic/vehicle/create']">Agregar Vehículo</button>
-         </div>
+         <!-- <div class="row mt-5">
+            <button class="btn btn-dark btn-sm ml-4" routerLink="/mechanic/vehicle/create">Agregar Vehículo</button>
+         </div> -->
          
          <br>
         
-         <label for="">Editar Información del Vehículo:</label>
+         <label for="">Editar información de un vehículo:</label>
          <div class="input-group">
-            <input id="placa" type="text" class="form-control" placeholder="Placa" >
+            <input id="placa" type="text" class="form-control" placeholder="Ingresé la placa del vh">
             <div class="input-group-append">
-              <button class="btn btn-outline-primary btn-sm" type="button" (click)="editeVehicle()">Editar</button>
+              <button class="btn btn-dark btn-sm" type="button" (click)="editeVehicle()">Editar vh</button>
             </div>
           </div>
          <br>
-         <label for="">Editar Estado del Vehiculo:</label>
+         <label for="">Actualizar estado de un vehículo:</label>
          <div class="input-group mb-4">
-            <input id="placaId" type="text" class="form-control" placeholder="Placa" >
+            <input id="placaId" type="text" class="form-control" placeholder="Ingresé la placa del vh">
             <div class="input-group-append">
                <!-- Button trigger modal -->
-              <button class="btn btn-outline-primary btn-sm" type="button"  data-toggle="modal" (click)="getModal()" data-target="#stateModal">Editar</button>
+              <button class="btn btn-dark btn-sm" type="button"  data-toggle="modal" (click)="getModal()" data-target="#stateModal">Actualizar</button>
             </div>
          </div>
+         <div class="d-flex justify-content-between align-items-center">
+               <button class="btn btn-danger ml-3" [routerLink]="['/profile']">Volver</button>    
+               <button class="btn btn-warning" [routerLink]="['/mechanic/register-owner-vehicle']">Registrar cliente nuevo</button>
+         </div>
+         <br>
          <!-- Modal -->
          <div *ngIf="status==1" class="modal fade" id="stateModal" tabindex="-1" role="dialog" aria-labelledby="stateModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -56,8 +57,9 @@
                </div>
                <div class="modal-footer">
                   <button type="button" class="btn btn-secondary" data-dismiss="modal">Volver</button>
-                  <button type="button" class="btn btn-primary" (click)="updateVehicleStatus()">Actualizar</button>
+                  <button type="button" class="btn btn-primary" (click)="updateVehicleStatus()">Actualizar</button>  
                </div>
+
             </div>
             </div>
          </div>

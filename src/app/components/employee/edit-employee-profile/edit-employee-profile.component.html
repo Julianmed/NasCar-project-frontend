@@ -1,0 +1,62 @@
+<div class="col-sm-12 mx-auto mt-5">
+    <div class="card">
+        <div class="container">
+            <h3 class="mt-4 text-uppercase text-center">Actualizar mi perfil</h3>
+            <hr>
+            <form #updateEmployeeForm="ngForm" (ngSubmit)="updateEmployee(formUpdateEmployee.value)">
+                <div class="form-group">
+                    <h3 class="text-center">Mi perfil</h3>
+                    <hr>
+                    <div class="row">
+                        <div class="col">
+                            <label for="photo"><strong>Mi foto de perfil</strong></label>
+                            <input type="file" [(ngModel)]="employee.photo" class="form-control" accept=".jpg, .png, .jpeg, .gif" name="photo">
+                            <br>
+
+                            <label for="_id"><strong>Mi número de identificación</strong></label>
+                            <input [(ngModel)]="employee._id" type="text" class="form-control" required="true" name="_id"> <!--NO CAMBIA-->
+                            <br>
+
+                            <label for="userID"><strong>UserID</strong></label>
+                            <input type="text" [(ngModel)]="employee.userID" class="form-control" required="true" name="userID">
+                            <br>
+
+                            <label for="user"><strong>Usuario</strong></label>
+                            <input type="text" [(ngModel)]="employee.user" class="form-control" name="user" required="true">
+                            <br>
+
+                            <label for="email"><strong>Email</strong></label>
+                            <input type="email" [(ngModel)]="employee.email" class="form-control" name="email" required="true">
+                            <br>                         
+
+                        </div>
+                        <div class="col">
+                            <label for="fname"><strong>Nombre</strong></label>
+                            <input type="text" [(ngModel)]="employee.fname" class="form-control" name="fname" required="true">
+                            <br>   
+
+                            <label for="lname"><strong>Apellidos</strong></label>
+                            <input type="text" [(ngModel)]="employee.lname" class="form-control" name="lname" required="true">
+                            <br>
+
+                            <label for="cellphone"><strong>Celular</strong></label>
+                            <input type="tel" [(ngModel)]="employee.cellphone" class="form-control" name="cellphone" required="true">
+                            <br>
+
+                            <label for="landline"><strong>Teléfono</strong></label>
+                            <input type="tel" [(ngModel)]="employee.landline" class="form-control" name="landline" required="true">
+                            <br>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <a class="btn btn-danger" routerLink="/employee-profile">Cancelar actualizacion</a>
+                    <button class="btn btn-success" type="submit">Actualizar perfil</button>
+                </div>                
+                <hr>
+            </form>            
+            <hr>
+        </div>
+    </div>
+</div>
