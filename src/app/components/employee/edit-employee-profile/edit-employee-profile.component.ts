@@ -34,7 +34,7 @@ export class EditEmployeeProfileComponent implements OnInit {
     });
   }
 
-  updateEmployeeForm(form: NgForm) {
+  updateEmployee(form: NgForm) {
     console.log("El empleado es: ", form);
     this.employeeService.updateEmployee(form).subscribe(res => {
       console.log(res);
