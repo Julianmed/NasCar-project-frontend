@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class EmployeeService {
 
-  public EMPLOYEE_API = 'http://localhost:3000/api/employees';
+  public EMPLOYEE_API = 'https://nascar-backend.herokuapp.com/api/employees';
   constructor(private http: HttpClient) { }
 
   getAll (): Observable<any>{
@@ -28,5 +28,12 @@ export class EmployeeService {
 
   deleteEmployee (employee:any) {
     return this.http.delete(this.EMPLOYEE_API + '/employee/' + employee._id, employee)
+  }
+
+  updateProfileStatus(profileStatus: string, id: string){
+    let result: Observable<any>;
+    console.log(this.EMPLOYEE_API+"/alta-employee/"+ id, {profileStatus});
+    result = this.http.put(this.EMPLOYEE_API+"/alta-employee/"+id, {profileStatus});
+    return result;
   }
 }

@@ -3,19 +3,42 @@
         <div class="container">
             <h3 class="text-center mt-4 text-uppercase">Área de trabajo del asistente de recursos humanos</h3>
             <hr>
-            <form action="">
-                <div class="form-group text-center">
-                    <h4>Información necesaria para dar de alta a empleados</h4>
-                    <label for="_id"><strong>Número de identificación</strong></label>
-                    <input formControlName="_id" type="text" class="form-control" id="_id" placeholder="Ingrese el número de identificación del empleado" required="true">
+                <form action="">
+                    <h4>Ingrese el número de identificación del empleado para dar de alta</h4>
+                    <label for="employeeId"><strong>Número de identificación del empleado</strong></label>
+                    <input type="text" class="form-control" id="employeeId" placeholder="Ingrese el número de identificación del empleado">
                     <br>
+                    <div class="d-flex justify-content-between align-items-center input-group-append">                        
+                        <button type="reset" class="btn btn-warning">Limpiar campo</button>
+                        <button class="btn btn-success" type="button" data-toggle="modal" (click)="getModalEmployee()" data-target="#permitEmployee">Dar de alta</button>
+                    </div>
+                    <br>
+                </form>
+                <!-- MODAL -->
+                <div *ngIf="permits==1" class="modal fade" id="permitEmployee" tabindex="-1" role="dialog" aria-labelledby="permitModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h3 class="modal-title text-uppercase" id="permitModalLabel">Dar de alta al empleado</h3>
+                                <button class="close" data-dismiss="modal" aria-label="Close" type="button">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <label for="permit"><strong>Seleccione "active" para dar de alta al empleado</strong></label>
+                                <br>
+                                <select class="custom-select mr-sm-2" name="permitOfEmployee" id="permit" required="true">
+                                    <option *ngFor="let permit of permitOfEmployee" id="permit">{{permit}}</option>
+                                </select>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-dismiss="modal">Volver</button>
+                                <button type="button" class="btn btn-success" (click)="updateEmployeePermit()">Dar de alta</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="d-flex justify-content-between align-items-center">
-                    <button type="reset" class="btn btn-warning">Limpiar campo</button>
-                    <button class="text-center btn btn-success" type="submit">Dar de alta al empleado</button>
-                </div>                
-                <hr>
-            </form>
+                <!-- END MODAL -->    
         </div>
     </div>
 </div>
