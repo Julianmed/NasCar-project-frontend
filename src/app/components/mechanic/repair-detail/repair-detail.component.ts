@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild} from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { VehicleService } from '../../../services/vehicle/vehicle.service';
 
 @Component({
   selector: 'app-repair-detail',
@@ -11,6 +12,7 @@ export class RepairDetailComponent implements OnInit {
   model = "";
   admissionDate = "";
   responsible = "";
+  vehicle: any;
 
   titles = ['ID', 'Nombre', 'Descripción', 'Cantidad', 'Valor unitario', 'Valor total', 'Descartar'];
   id = 0;
@@ -22,13 +24,28 @@ export class RepairDetailComponent implements OnInit {
   @ViewChild('lot') inputLot;
   @ViewChild('unitPrice') inputUnitPrice;
 
-  constructor() { }
+  constructor( private vehSvc: VehicleService) { }
 
   ngOnInit(): void {
   }
 
   search(){
     let plateLicense = (<HTMLInputElement> document.getElementById('plate license')).value;
+    if(plateLicense != ''){
+      this.vehSvc.get(plateLicense).subscribe((vehicle: any)=>{
+        if(vehicle){
+          console.log("vehicle ",vehicle);
+          this.vehicle = vehicle;
+          this.brand = vehicle.brand;
+          this.model = vehicle.model;
+          this.admissionDate = vehicle.addmision.date;
+          this.responsible = vehicle.addmision.registeredBy;
+        }
+        else{
+          console.log("No se encontró el vehículo");
+        }
+      })
+    }
   }
 
   addDetail(){
@@ -67,6 +84,11 @@ export class RepairDetailComponent implements OnInit {
   }
 
   saveDetails(){
-
+    if(this.vehicle && this.details){
+      this.vehicle.repairDetail = this.details;
+      this.vehSvc.addRepairDetail(this.vehicle, this.vehicle._id).subscribe((result)=>{
+        console.log(result);
+      })
+    }
   }
 }

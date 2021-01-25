@@ -38,7 +38,7 @@ export class EditVehicleComponent implements OnInit {
 
   updateVehicle(form: NgForm){
     console.log("el vehicle es: ",form);
-    this.vehicleService.updateVehicle(form).subscribe(result =>{
+    this.vehicleService.updateVehicle(form, this.vehicle).subscribe(result =>{
       console.log(result);
     });
     this.router.navigate(['tasks']);
