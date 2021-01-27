@@ -2,7 +2,7 @@
     <div class="col-md-10 mx-auto mt-5">
         <div class="card">
             <div class="card-body">
-                <form #detailForm="ngForm" (ngSubmit)="saveDetails()">
+                <form >
                     <h1 class="text-center">Registro de detalles de la reparación de vehículos</h1>
                     <br>
                     <div>
@@ -18,10 +18,10 @@
                         </div>
                         <br>
                         <div class="form-group label-strong">
-                            <p type="text" class="from-control">Marca: {{ brand }}</p>
-                            <p type="text" class="from-control">Modelo: {{ model }}</p>
-                            <p type="text" class="from-control">Vehículo admitido por: {{ responsible }}</p>
-                            <p type="text" class="from-control">Fecha de admisión: {{ admissionDate }}</p>
+                            <p>Marca: {{ brand }}</p>
+                            <p>Modelo: {{ model }}</p>
+                            <p>Vehículo admitido por: {{ responsible }}</p>
+                            <p>Fecha de admisión: {{ admissionDate }}</p>
                         </div>
                     </div>
                     <br>
@@ -86,10 +86,10 @@
                             </tbody>
                         </table>
                         <div>
-                            <button class="btn btn-danger" [routerLink]="['']">
+                            <button class="btn btn-danger" routerLink="/tasks">
                                 Descartar todo y volver
                             </button>
-                            <button class="btn btn-success ml-5" type ="submit">
+                            <button class="btn btn-success ml-5" (click)="saveDetails()">
                                 Guardar detalles de reparación
                             </button>
                         </div>
