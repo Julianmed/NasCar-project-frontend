@@ -1,12 +1,27 @@
 <div class="col-sm-12 mx-auto mt-5">
     <div class="card">
-        <div class="container">
-            <h3 class="text-center mt-4">Perfil empleado</h3>
+        <div class="container text-center">
+            <h4 class="text-center mt-4 text-uppercase">Perfil de <strong>{{nameEmployee}} {{lnameEmployee}}</strong></h4>
             <hr>
-            <img src="../../../../assets/icono-hombre.png" alt="icono" class="icono">
-            <h6>AQUI DEBERÍA IR LA INFORMACIÓN DEL EMPLEADO</h6>
-            <br>
-            <button class="col btn btn-warning" [routerLink]="['/employee-profile/edit/1040050070']">Actualizar mi información</button>
+            <form (ngSubmit)="uploadPhoto()">
+                <input type="file" class="d-none" (change)="onPhotoSelected($event)" #photo>
+                <img [src]="photoSelected || '../../../../assets/icono-hombre.png'" alt="icono" class="icono" (click)="photo.click()">
+                <hr>
+                <label><strong>Nombre completo</strong></label>
+                <br>
+                <label>{{nameEmployee}} {{lnameEmployee}}</label>
+                <br>
+                <label><strong>Rol en la empresa NasCar</strong></label>
+                <br>
+                <label>{{rolEmployee}}</label>
+                <br>
+                <label><strong>Correo electrónico</strong></label>
+                <br>
+                <label>{{emailEmployee}}</label>
+                <button class="col btn btn-warning" type="submit">Guardar foto de perfil</button>
+                <br>
+            </form>
+
             <hr>
         </div>
     </div>
