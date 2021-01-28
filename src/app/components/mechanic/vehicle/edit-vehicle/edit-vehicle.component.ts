@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { NgForm} from '@angular/forms';
-import { NgModule } from '@angular/core';
-import { VehicleService } from 'src/app/services/vehicle/vehicle.service';
+import { VehicleService } from '@app/services/vehicle/vehicle.service';
+import { AuthService } from '@app/services/auth/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -17,23 +17,29 @@ export class EditVehicleComponent implements OnInit {
   constructor(
     private vehicleService: VehicleService, 
     private activatedRoute: ActivatedRoute, 
-    private router: Router
+    private router: Router,
+    private authSvc: AuthService
   ) { }
 
   ngOnInit(){
-    this.sub = this.activatedRoute.params.subscribe(params => {
-      const id = params.placa;
-      if(id) {
-        this.vehicleService.get(id).subscribe((vehicle: any) =>{
-          if(vehicle) {
-            this.vehicle = vehicle;
-            console.log("vehicle: ", vehicle)
-          }else{
-            console.log('vehicle no found.')
-          }
-        })
-      }
-    });
+    if(this.authSvc.userAuthenticated()){
+      this.sub = this.activatedRoute.params.subscribe(params => {
+        const id = params.placa;
+        if(id) {
+          this.vehicleService.get(id).subscribe((vehicle: any) =>{
+            if(vehicle) {
+              this.vehicle = vehicle;
+              console.log("vehicle: ", vehicle)
+            }else{
+              console.log('vehicle no found.')
+            }
+          })
+        }
+      });
+    }
+    else{
+      this.router.navigate(['home']);
+    }
   }
 
   updateVehicle(form: NgForm){

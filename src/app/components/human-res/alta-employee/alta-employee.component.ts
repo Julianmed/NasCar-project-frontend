@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { EmployeeService } from '@app/services/employee/employee.service';
+import { AuthService } from '@app/services/auth/auth.service';
 
 @Component({
   selector: 'app-alta-employee',
@@ -18,9 +19,13 @@ export class AltaEmployeeComponent implements OnInit {
     private employeeService: EmployeeService,
     private router: Router,
     private route: ActivatedRoute,
+    private authSvc: AuthService
   ) { }
 
   ngOnInit(): void {
+    if(!this.authSvc.userAuthenticated()){
+      this.router.navigate(['home']);
+    }
   }
 
   updateEmployeePermit(){

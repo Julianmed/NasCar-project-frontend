@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { EmployeeService } from '@app/services/employee/employee.service';
 import { Subscription } from 'rxjs';
+import { AuthService } from '@app/services/auth/auth.service';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 
 interface HtmlInputEvent extends Event{
@@ -30,24 +31,30 @@ export class EmployeeProfileComponent implements OnInit {
 
   constructor(private router: Router,
     private route: ActivatedRoute,
-    private employeeService: EmployeeService
+    private employeeService: EmployeeService,
+    private authSvc: AuthService
     ) { }
 
   ngOnInit(){
-    this.sub = this.route.params.subscribe(params => {
-      console.log(params);
-      this.employeeId = params['id'];
-      console.log(this.employeeId);
-      this.employeeService.get(this.employeeId).subscribe((data: any) => {
-        console.log(data);
-        this.nameEmployee = data.fname;
-        this.lnameEmployee = data.lname;
-        this.rolEmployee = data.rol;
-        this.emailEmployee = data.email;
-        this.photoEmployee = data.photo;
-        console.log(this.photoEmployee);
-      })
-    });
+    if(this.authSvc.userAuthenticated()){
+      this.sub = this.route.params.subscribe(params => {
+        console.log(params);
+        this.employeeId = params['id'];
+        console.log(this.employeeId);
+        this.employeeService.get(this.employeeId).subscribe((data: any) => {
+          console.log(data);
+          this.nameEmployee = data.fname;
+          this.lnameEmployee = data.lname;
+          this.rolEmployee = data.rol;
+          this.emailEmployee = data.email;
+          this.photoEmployee = data.photo;
+          console.log(this.photoEmployee);
+        })
+      });
+    }
+    else{
+      this.router.navigate(['home']);
+    }
   }
 
   onPhotoSelected(event: HtmlInputEvent):void {

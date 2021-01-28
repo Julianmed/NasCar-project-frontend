@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { EmployeeService } from '@app/services/employee/employee.service';
+import { AuthService } from '@app/services/auth/auth.service';
 
 @Component({
   selector: 'app-create-employee',
@@ -17,7 +18,8 @@ export class CreateEmployeeComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private employeeService: EmployeeService,
-    private router: Router
+    private router: Router,
+    private authSvc: AuthService
   ) {this.formCreateEmployee = this.formBuilder.group({
     _id: ['', Validators.required],
     userID: ['', Validators.required],
@@ -34,6 +36,10 @@ export class CreateEmployeeComponent implements OnInit {
 }
 
   ngOnInit(): void {
+    if(!this.authSvc.userAuthenticated()){
+      this.router.navigate(['home']);
+    }
+
   }
 
   registerEmployee(values){

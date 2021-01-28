@@ -24,8 +24,7 @@ import { QuotationComponent } from './components/client/quotation/quotation.comp
 import { ProfileComponent } from './components/mechanic/profile/profile.component';
 import { TasksComponent } from './components/mechanic/tasks/tasks.component';
 import { RepairDetailComponent } from './components/mechanic/repair-detail/repair-detail.component';
-import { CreateEmployeeComponent } from './components/managerAssistant/employee/create-employee/create-employee.component';
-import { EditEmployeeComponent } from './components/managerAssistant/employee/edit-employee/edit-employee.component';
+import { CreateEmployeeComponent } from './components/managerAssistant/create-employee/create-employee.component';
 import { RegisterOwnerVehicleComponent } from './components/mechanic/register-owner-vehicle/register-owner-vehicle.component';
 import { CommonModule } from '@angular/common';
 import { AltaEmployeeComponent } from './components/human-res/alta-employee/alta-employee.component';
@@ -48,7 +47,6 @@ import { ProfileManagerComponent } from './components/managerAssistant/profile-m
     TasksComponent,
     RepairDetailComponent,
     CreateEmployeeComponent,
-    EditEmployeeComponent,
     RegisterOwnerVehicleComponent,
     AltaEmployeeComponent,
     EditEmployeeProfileComponent,

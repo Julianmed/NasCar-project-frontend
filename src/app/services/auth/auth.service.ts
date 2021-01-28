@@ -2,7 +2,8 @@ import { catchError, first } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
-@Injectable()
+import { Observable } from 'rxjs';
+@Injectable({providedIn:'root'})
 export class AuthService {
 
   constructor(public afAuth: AngularFireAuth) { }
@@ -50,6 +51,14 @@ export class AuthService {
       await this.afAuth.signOut();
     } catch (error) {
       console.log(error);
+    }
+  }
+
+  userAuthenticated(){
+    try{
+      return JSON.parse(localStorage.getItem('user'))[0]
+    }catch (error){
+      return null;
     }
   }
 }

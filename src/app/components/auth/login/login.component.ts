@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl} from '@angular/forms';
 import { Router , ActivatedRoute} from '@angular/router';
 import { Observable } from 'rxjs';
-import { AuthService } from '../../../services/auth/auth.service';
-import { OwnerService } from '../../../services/owner/owner.service';
+import { AuthService } from '@app/services/auth/auth.service';
+import { OwnerService } from '@app/services/owner/owner.service';
 import * as firebase from "firebase/app";
 
 @Component({
@@ -34,6 +34,7 @@ export class LoginComponent  {
       if (user && user.user.emailVerified){
         //Redirect to homepage
         this.email = currentUser.email;//----------------------------------------------
+        localStorage.setItem('user',JSON.stringify([user]));
         this.router.navigate(['/profile']);
       }else if (user){
         this.router.navigate(['/verification-email']);

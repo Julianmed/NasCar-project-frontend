@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { VehicleService } from '../../../services/vehicle/vehicle.service';
-
+import { VehicleService } from '@app/services/vehicle/vehicle.service';
+import { AuthService } from '@app/services/auth/auth.service';
 
 @Component({
   selector: 'app-quotation',
@@ -17,17 +17,22 @@ export class QuotationComponent implements OnInit {
   constructor( 
     private vehicleSrv: VehicleService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private authSvc: AuthService
     ) { }
 
   ngOnInit(){
-    this.sub = this.route.params.subscribe(params => {
-      console.log(params);
-      this.placa = params['placa'];
-      this.vehicleSrv.get(this.placa).subscribe((data:any) =>{
-        this.detailsQuotation = data.repairDetail;
+    if(this.authSvc.userAuthenticated()){
+      this.sub = this.route.params.subscribe(params => {
+        this.placa = params['placa'];
+        this.vehicleSrv.get(this.placa).subscribe((data:any) =>{
+          this.detailsQuotation = data.repairDetail;
+        })
       })
-    });
+    }
+    else{
+      this.router.navigate(['home']);
+    }
   }
 
   accept(){

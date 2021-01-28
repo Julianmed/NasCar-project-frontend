@@ -1,6 +1,8 @@
 import { Component, OnInit, ViewChild} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { VehicleService } from '../../../services/vehicle/vehicle.service';
+import { Router } from '@angular/router';
+import { AuthService } from '@app/services/auth/auth.service';
+import { VehicleService } from '@app/services/vehicle/vehicle.service';
 
 @Component({
   selector: 'app-repair-detail',
@@ -24,9 +26,16 @@ export class RepairDetailComponent implements OnInit {
   @ViewChild('lot') inputLot;
   @ViewChild('unitPrice') inputUnitPrice;
 
-  constructor( private vehSvc: VehicleService) { }
+  constructor( 
+    private vehSvc: VehicleService,
+    private authSvc: AuthService,
+    private router: Router
+    ) { }
 
   ngOnInit(): void {
+    if(!this.authSvc.userAuthenticated()){
+      this.router.navigate(['home'])
+    }
   }
 
   search(){
