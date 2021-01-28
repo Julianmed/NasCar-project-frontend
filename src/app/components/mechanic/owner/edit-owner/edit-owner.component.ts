@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { NgForm} from '@angular/forms';
 import { OwnerService } from 'src/app/services/owner/owner.service';
 import { AuthService } from '@app/services/auth/auth.service';
+import { EmployeeService } from '@app/services/employee/employee.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -18,21 +19,35 @@ export class EditOwnerComponent implements OnInit {
     private ownerService: OwnerService,
     private activatedRoute: ActivatedRoute,
     private router: Router,
-    private authSvc: AuthService
+    private authSvc: AuthService,
+    private employeeService: EmployeeService
+    
   ) {}
 
   ngOnInit(){
     if(this.authSvc.userAuthenticated()){
-      this.sub = this.activatedRoute.params.subscribe(params => {
-        const id = params.dni;
-        if(id) {
-          this.ownerService.get(id).subscribe((owner: any) =>{
-            if(owner) {
-              this.owner = owner;
-            }else{
-              console.log('Owner no found.')
+      const user = JSON.parse(localStorage.getItem('user'))[0];
+      this.employeeService.getRol(user.user.uid).subscribe((empleado:any)=>{
+        console.log("empleado: ",empleado.rol);
+        if(empleado.rol=='Manager assistant'){
+          this.router.navigate(['manager/profile']);
+        }
+        else if(empleado.rol=='HR assistant'){
+          this.router.navigate(['human-res/profile']);
+        }
+        else{
+          this.sub = this.activatedRoute.params.subscribe(params => {
+            const id = params.dni;
+            if(id) {
+              this.ownerService.get(id).subscribe((owner: any) =>{
+                if(owner) {
+                  this.owner = owner;
+                }else{
+                  console.log('Owner no found.')
+                }
+              })
             }
-          })
+          });
         }
       });
     }

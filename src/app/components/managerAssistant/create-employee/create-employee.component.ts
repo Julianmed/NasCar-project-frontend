@@ -39,7 +39,18 @@ export class CreateEmployeeComponent implements OnInit {
     if(!this.authSvc.userAuthenticated()){
       this.router.navigate(['home']);
     }
-
+    else{
+      const user = JSON.parse(localStorage.getItem('user'))[0];
+      this.employeeService.getRol(user.user.uid).subscribe((empleado:any)=>{
+        console.log("empleado: ",empleado.rol);
+        if(empleado.rol=='technician'){
+          this.router.navigate(['tasks/'+empleado._id]);
+        }
+        else if(empleado.rol=='HR assistant'){
+          this.router.navigate(['human-res/profile']);
+        }
+      });
+    }
   }
 
   registerEmployee(values){

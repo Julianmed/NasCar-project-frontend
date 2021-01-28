@@ -51,7 +51,7 @@ const routes: Routes = [
   },
   
   {
-    path:'state',
+    path:'state/:token',
     component: StateComponent,
   },
 
