@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, Validators, FormBuilder} from '@angular/forms';
 import { VehicleService } from 'src/app/services/vehicle/vehicle.service';
 import { AuthService } from '@app/services/auth/auth.service';
+import { EmployeeService } from '@app/services/employee/employee.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,7 +19,8 @@ export class CreateVehicleComponent implements OnInit {
     private formBuilder: FormBuilder,
     private vehicleService: VehicleService,
     private router: Router,
-    private authSvc: AuthService
+    private authSvc: AuthService,
+    private employeeService: EmployeeService
   ) { 
     this.formVehicle = this.formBuilder.group({
       _id: ['', Validators.required],
@@ -32,7 +34,19 @@ export class CreateVehicleComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(!this.authSvc.userAuthenticated()){
+    if(this.authSvc.userAuthenticated()){
+      const user = JSON.parse(localStorage.getItem('user'))[0];
+      this.employeeService.getRol(user.user.uid).subscribe((empleado:any)=>{
+        console.log("empleado: ",empleado.rol);
+        if(empleado.rol=='Manager assistant'){
+          this.router.navigate(['manager/profile']);
+        }
+        else if(empleado.rol=='HR assistant'){
+          this.router.navigate(['human-res/profile']);
+        }
+      });
+    }
+    else{
       this.router.navigate(['home']);
     }
   }

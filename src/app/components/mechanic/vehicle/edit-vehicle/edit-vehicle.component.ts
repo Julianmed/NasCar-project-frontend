@@ -3,6 +3,7 @@ import { Subscription } from 'rxjs';
 import { NgForm} from '@angular/forms';
 import { VehicleService } from '@app/services/vehicle/vehicle.service';
 import { AuthService } from '@app/services/auth/auth.service';
+import { EmployeeService } from '@app/services/employee/employee.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -18,22 +19,35 @@ export class EditVehicleComponent implements OnInit {
     private vehicleService: VehicleService, 
     private activatedRoute: ActivatedRoute, 
     private router: Router,
-    private authSvc: AuthService
+    private authSvc: AuthService,
+    private employeeService: EmployeeService
   ) { }
 
   ngOnInit(){
     if(this.authSvc.userAuthenticated()){
-      this.sub = this.activatedRoute.params.subscribe(params => {
-        const id = params.placa;
-        if(id) {
-          this.vehicleService.get(id).subscribe((vehicle: any) =>{
-            if(vehicle) {
-              this.vehicle = vehicle;
-              console.log("vehicle: ", vehicle)
-            }else{
-              console.log('vehicle no found.')
+      const user = JSON.parse(localStorage.getItem('user'))[0];
+      this.employeeService.getRol(user.user.uid).subscribe((empleado:any)=>{
+        console.log("empleado: ",empleado.rol);
+        if(empleado.rol=='Manager assistant'){
+          this.router.navigate(['manager/profile']);
+        }
+        else if(empleado.rol=='HR assistant'){
+          this.router.navigate(['human-res/profile']);
+        }
+        else{
+          this.sub = this.activatedRoute.params.subscribe(params => {
+            const id = params.placa;
+            if(id) {
+              this.vehicleService.get(id).subscribe((vehicle: any) =>{
+                if(vehicle) {
+                  this.vehicle = vehicle;
+                  console.log("vehicle: ", vehicle)
+                }else{
+                  console.log('vehicle no found.')
+                }
+              })
             }
-          })
+          });
         }
       });
     }
