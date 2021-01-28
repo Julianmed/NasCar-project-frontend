@@ -29,7 +29,6 @@ export class AltaEmployeeComponent implements OnInit {
     else{
       const user = JSON.parse(localStorage.getItem('user'))[0];
       this.employeeService.getRol(user.user.uid).subscribe((empleado:any)=>{
-        console.log("empleado: ",empleado.rol);
         if(empleado.rol=='technician'){
           this.router.navigate(['tasks/'+empleado._id]);
         }
@@ -42,7 +41,6 @@ export class AltaEmployeeComponent implements OnInit {
 
   updateEmployeePermit(){
     this.permit = (<HTMLInputElement> document.getElementById('permit')).value;
-    console.log("Estado del profileStatus de " + this.employee + " es " + this.permit);
     this.employeeService.updateProfileStatus(this.permit, this.employee).subscribe((data) => {
       console.log(data);
       alert(data.message);

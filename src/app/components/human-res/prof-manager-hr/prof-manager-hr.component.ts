@@ -23,7 +23,6 @@ export class ProfManagerHrComponent implements OnInit {
     else{
       const user = JSON.parse(localStorage.getItem('user'))[0];
       this.employeeService.getRol(user.user.uid).subscribe((empleado:any)=>{
-        console.log("empleado: ",empleado.rol);
         if(empleado.rol=='technician'){
           this.router.navigate(['tasks/'+empleado._id]);
         }

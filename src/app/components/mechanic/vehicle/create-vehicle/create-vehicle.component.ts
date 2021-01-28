@@ -37,7 +37,6 @@ export class CreateVehicleComponent implements OnInit {
     if(this.authSvc.userAuthenticated()){
       const user = JSON.parse(localStorage.getItem('user'))[0];
       this.employeeService.getRol(user.user.uid).subscribe((empleado:any)=>{
-        console.log("empleado: ",empleado.rol);
         if(empleado.rol=='Manager assistant'){
           this.router.navigate(['manager/profile']);
         }

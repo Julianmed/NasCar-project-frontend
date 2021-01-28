@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { VehicleService } from '@app/services/vehicle/vehicle.service';
 import { AuthService } from '@app/services/auth/auth.service';
 import { OwnerService } from '@app/services/owner/owner.service';
@@ -23,7 +23,6 @@ export class RegisterOwnerVehicleComponent implements OnInit {
     private formBuilder: FormBuilder,
     private ownerService: OwnerService,
     private vehicleService: VehicleService,
-    private activatedRoute: ActivatedRoute,
     private authSvc: AuthService,
     private employeeService: EmployeeService
   ) {
@@ -47,7 +46,6 @@ export class RegisterOwnerVehicleComponent implements OnInit {
     if(this.authSvc.userAuthenticated()){
       const user = JSON.parse(localStorage.getItem('user'))[0];
       this.employeeService.getRol(user.user.uid).subscribe((empleado:any)=>{
-        console.log("empleado: ",empleado.rol);
         if(empleado.rol=='Manager assistant'){
           this.router.navigate(['manager/profile']);
         }
@@ -61,7 +59,7 @@ export class RegisterOwnerVehicleComponent implements OnInit {
     }
   }
 
-  registerOwnerVehicle(values){
+  registerOwnerVehicle(){
     console.log(this.formOwnerVehicle.value);
     let clientForm = {
       _id: this.formOwnerVehicle.value._id,
@@ -73,13 +71,9 @@ export class RegisterOwnerVehicleComponent implements OnInit {
       vehicles: this.formOwnerVehicle.value.placa,
     }
     this.formOwnerVehicle.value.fname;
-    console.log('El nombre es: ' + clientForm._id);
-    console.log('Entrando al registerOwnerVehicle');
-
     this.ownerService.createUser(clientForm).subscribe(result => {
       console.log(result);
     });
-    this.router.navigate(['/'])
     console.log(this.formOwnerVehicle.value);
     let vehicleForm = {
       _id: this.formOwnerVehicle.value.placa,
@@ -89,11 +83,9 @@ export class RegisterOwnerVehicleComponent implements OnInit {
       color: this.formOwnerVehicle.value.color
     }
     this.formOwnerVehicle.value.fname;
-    console.log('El nombre es: ' + vehicleForm._id);
-    console.log('Entrando al registerOwnerVehicle');
     this.vehicleService.createVehicle(vehicleForm).subscribe(result => {
       console.log(result);
     });
-    this.router.navigate(['/'])
+    this.router.navigate(['/employee-profile'])
   }
 }
