@@ -34,6 +34,7 @@ export class StateComponent implements OnInit {
       });
     }
     else{
+      console.log("Usuario no logueado")
       this.router.navigate(['home']);
     }
   }
