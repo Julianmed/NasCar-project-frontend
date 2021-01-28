@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { Subscription } from 'rxjs';
 import { ActivatedRoute, Router } from '@angular/router';
-import { VehicleService } from '../../../services/vehicle/vehicle.service';
-import { OwnerService } from '../../../services/owner/owner.service';
+import { VehicleService } from '@app/services/vehicle/vehicle.service';
+import { AuthService } from '@app/services/auth/auth.service';
+import { OwnerService } from '@app/services/owner/owner.service';
 
 @Component({
   selector: 'app-tasks',
@@ -20,10 +19,14 @@ export class TasksComponent implements OnInit {
     private vehicleSrv:VehicleService, 
     private router: Router,
     private route: ActivatedRoute,
-    private ownerSrv: OwnerService
+    private ownerSrv: OwnerService,
+    private authSvc: AuthService
   ) { }
 
   ngOnInit(): void {
+    if(!this.authSvc.userAuthenticated()){
+      this.router.navigate(['home'])
+    }
   }
 
   editeOwner(){

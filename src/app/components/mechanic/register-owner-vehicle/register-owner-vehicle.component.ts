@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { VehicleService } from '@app/services/vehicle/vehicle.service';
+import { AuthService } from '@app/services/auth/auth.service';
 
 
 @Component({
@@ -17,7 +18,8 @@ export class RegisterOwnerVehicleComponent implements OnInit {
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
-    private vehicleService: VehicleService
+    private vehicleService: VehicleService,
+    private authSvc: AuthService
   ) {
     this.formOwnerVehicle = this.formBuilder.group({
       _id:['', Validators.required],
@@ -36,6 +38,12 @@ export class RegisterOwnerVehicleComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(this.authSvc.userAuthenticated()){
+      
+    }
+    else{
+      this.router.navigate(['home']);
+    }
   }
 
   registerOwnerVehicle(values){

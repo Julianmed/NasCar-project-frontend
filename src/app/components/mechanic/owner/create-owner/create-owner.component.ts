@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
 import { OwnerService } from 'src/app/services/owner/owner.service';
+import { AuthService } from '@app/services/auth/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,7 +17,8 @@ export class CreateOwnerComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private ownerService: OwnerService,
-    private router: Router
+    private router: Router,
+    private authSvc: AuthService
   ) {
     this.formOwner = this.formBuilder.group({
       _id: ['', Validators.required],
@@ -30,6 +32,9 @@ export class CreateOwnerComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    if(!this.authSvc.userAuthenticated()){
+      this.router.navigate(['home'])
+    }
   }
 
   removePlaca(){

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { NgForm} from '@angular/forms';
-import { NgModule } from '@angular/core';
 import { OwnerService } from 'src/app/services/owner/owner.service';
+import { AuthService } from '@app/services/auth/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -14,23 +14,31 @@ export class EditOwnerComponent implements OnInit {
   sub: Subscription;
   owner: any = {}
 
-  constructor(private ownerService: OwnerService, private activatedRoute: ActivatedRoute, private router: Router) {
-
-  }
+  constructor(
+    private ownerService: OwnerService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private authSvc: AuthService
+  ) {}
 
   ngOnInit(){
-    this.sub = this.activatedRoute.params.subscribe(params => {
-      const id = params.dni;
-      if(id) {
-        this.ownerService.get(id).subscribe((owner: any) =>{
-          if(owner) {
-            this.owner = owner;
-          }else{
-            console.log('Owner no found.')
-          }
-        })
-      }
-    });
+    if(this.authSvc.userAuthenticated()){
+      this.sub = this.activatedRoute.params.subscribe(params => {
+        const id = params.dni;
+        if(id) {
+          this.ownerService.get(id).subscribe((owner: any) =>{
+            if(owner) {
+              this.owner = owner;
+            }else{
+              console.log('Owner no found.')
+            }
+          })
+        }
+      });
+    }
+    else{
+      this.router.navigate(['home']);
+    }
   }
 
   updateVehicle(form: NgForm){
@@ -40,5 +48,4 @@ export class EditOwnerComponent implements OnInit {
     });
     this.router.navigate(['tasks']);
   }
-
 }
