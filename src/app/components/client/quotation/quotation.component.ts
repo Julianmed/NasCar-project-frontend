@@ -13,6 +13,19 @@ export class QuotationComponent implements OnInit {
   sub: Subscription;
   detailsQuotation: string;
   placa: string;
+  brand: string;
+  color: string;
+  model: string;
+  type: string;
+  admissionDate: Date;
+  technician: string;
+  details: any = [];
+  objectKeys = Object.keys;
+
+
+  titles = ['ID producto','Nombre', 'Descripción','Cantidad', 'Valor unitario', 'Valor total'];
+  detailsId: number;
+  detailsName: string;
 
   constructor( 
     private vehicleSrv: VehicleService,
@@ -23,10 +36,19 @@ export class QuotationComponent implements OnInit {
 
   ngOnInit(){
     if(this.authSvc.userAuthenticated()){
-      this.sub = this.route.params.subscribe(params => {
+      this.sub = this.route.params.subscribe((params) => {
+        console.log(params);
         this.placa = params['placa'];
         this.vehicleSrv.get(this.placa).subscribe((data:any) =>{
           this.detailsQuotation = data.repairDetail;
+          console.log(data);
+          this.brand = data.brand;
+          this.color = data.color;
+          this.model = data.model;
+          this.type = data.type;
+          this.admissionDate = data.addmision.date;
+          this.technician = data.addmision.registeredBy;
+          this.details = data.repairDetail;
         })
       })
     }

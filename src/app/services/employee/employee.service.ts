@@ -19,6 +19,10 @@ export class EmployeeService {
     return this.http.get(this.EMPLOYEE_API + '/employee/' + id);
   }
 
+  getRol(userID: string){
+    return this.http.get(this.EMPLOYEE_API+'/employee/rol/'+userID);
+  }
+
   createEmployee(employee: any): Observable<any> {
     return this.http.post(this.EMPLOYEE_API, employee);
   }
