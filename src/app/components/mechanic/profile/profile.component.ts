@@ -15,7 +15,7 @@ export class ProfileComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if(this.authSvc.userAuthenticated()){
+    if(!this.authSvc.userAuthenticated()){
       this.router.navigate(['home']);
     }
   }
