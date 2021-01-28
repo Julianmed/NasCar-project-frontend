@@ -31,6 +31,7 @@ import { AltaEmployeeComponent } from './components/human-res/alta-employee/alta
 import { EditEmployeeProfileComponent } from './components/employee/edit-employee-profile/edit-employee-profile.component';
 import { EmployeeProfileComponent } from './components/employee/profile/profile.component';
 import { ProfileManagerComponent } from './components/managerAssistant/profile-manager/profile-manager.component';
+import { ProfManagerHrComponent } from './components/human-res/prof-manager-hr/prof-manager-hr.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +52,8 @@ import { ProfileManagerComponent } from './components/managerAssistant/profile-m
     AltaEmployeeComponent,
     EditEmployeeProfileComponent,
     EmployeeProfileComponent,
-    ProfileManagerComponent
+    ProfileManagerComponent,
+    ProfManagerHrComponent
   ],
   imports: [
     BrowserModule,
