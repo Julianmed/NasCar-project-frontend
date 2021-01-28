@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { VehicleService } from '@app/services/vehicle/vehicle.service';
 import { AuthService } from '@app/services/auth/auth.service';
 import { OwnerService } from '@app/services/owner/owner.service';
+import { EmployeeService } from '@app/services/employee/employee.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -23,7 +24,8 @@ export class RegisterOwnerVehicleComponent implements OnInit {
     private ownerService: OwnerService,
     private vehicleService: VehicleService,
     private activatedRoute: ActivatedRoute,
-    private authSvc: AuthService
+    private authSvc: AuthService,
+    private employeeService: EmployeeService
   ) {
     this.formOwnerVehicle = this.formBuilder.group({
       _id:['', Validators.required],
@@ -43,7 +45,16 @@ export class RegisterOwnerVehicleComponent implements OnInit {
 
   ngOnInit(): void {
     if(this.authSvc.userAuthenticated()){
-      
+      const user = JSON.parse(localStorage.getItem('user'))[0];
+      this.employeeService.getRol(user.user.uid).subscribe((empleado:any)=>{
+        console.log("empleado: ",empleado.rol);
+        if(empleado.rol=='Manager assistant'){
+          this.router.navigate(['manager/profile']);
+        }
+        else if(empleado.rol=='HR assistant'){
+          this.router.navigate(['human-res/profile']);
+        }
+      });
     }
     else{
       this.router.navigate(['home']);

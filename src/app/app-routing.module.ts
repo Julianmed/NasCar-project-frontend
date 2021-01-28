@@ -7,7 +7,6 @@ import { CreateVehicleComponent } from './components/mechanic/vehicle/create-veh
 import { EditVehicleComponent } from './components/mechanic/vehicle/edit-vehicle/edit-vehicle.component';
 import { StateComponent } from './components/client/state/state.component';
 import { QuotationComponent } from './components/client/quotation/quotation.component';
-import { ProfileComponent } from './components/mechanic/profile/profile.component';
 import { TasksComponent } from './components/mechanic/tasks/tasks.component';
 import { RepairDetailComponent } from './components/mechanic/repair-detail/repair-detail.component';
 
@@ -52,18 +51,13 @@ const routes: Routes = [
   },
   
   {
-    path:'state',
+    path:'state/:token',
     component: StateComponent,
   },
 
   {
     path: 'quotation/:placa',
     component: QuotationComponent,
-  },
-
-  {
-    path: 'profile',
-    component: ProfileComponent,
   },
 
   {

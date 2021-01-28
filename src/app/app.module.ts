@@ -21,7 +21,6 @@ import { CreateVehicleComponent } from './components/mechanic/vehicle/create-veh
 import { EditVehicleComponent } from './components/mechanic/vehicle/edit-vehicle/edit-vehicle.component';
 import { StateComponent } from './components/client/state/state.component';
 import { QuotationComponent } from './components/client/quotation/quotation.component';
-import { ProfileComponent } from './components/mechanic/profile/profile.component';
 import { TasksComponent } from './components/mechanic/tasks/tasks.component';
 import { RepairDetailComponent } from './components/mechanic/repair-detail/repair-detail.component';
 import { CreateEmployeeComponent } from './components/managerAssistant/create-employee/create-employee.component';
@@ -44,7 +43,6 @@ import { ProfManagerHrComponent } from './components/human-res/prof-manager-hr/p
     EditVehicleComponent,
     StateComponent,
     QuotationComponent,
-    ProfileComponent,
     TasksComponent,
     RepairDetailComponent,
     CreateEmployeeComponent,

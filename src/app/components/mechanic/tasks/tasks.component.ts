@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { VehicleService } from '@app/services/vehicle/vehicle.service';
 import { AuthService } from '@app/services/auth/auth.service';
 import { OwnerService } from '@app/services/owner/owner.service';
+import { EmployeeService } from '@app/services/employee/employee.service';
 
 @Component({
   selector: 'app-tasks',
@@ -20,12 +21,25 @@ export class TasksComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private ownerSrv: OwnerService,
-    private authSvc: AuthService
+    private authSvc: AuthService,
+    private employeeService: EmployeeService
   ) { }
 
   ngOnInit(): void {
-    if(!this.authSvc.userAuthenticated()){
-      this.router.navigate(['home'])
+    if(this.authSvc.userAuthenticated()){
+      const user = JSON.parse(localStorage.getItem('user'))[0];
+      this.employeeService.getRol(user.user.uid).subscribe((empleado:any)=>{
+        console.log("empleado: ",empleado.rol);
+        if(empleado.rol=='Manager assistant'){
+          this.router.navigate(['manager/profile']);
+        }
+        else if(empleado.rol=='HR assistant'){
+          this.router.navigate(['human-res/profile']);
+        }
+      });
+    }
+    else{
+      this.router.navigate(['home']);
     }
   }
 

@@ -35,7 +35,7 @@ export class LoginComponent  {
         //Redirect to homepage
         this.email = currentUser.email;//----------------------------------------------
         localStorage.setItem('user',JSON.stringify([user]));
-        this.router.navigate(['/profile']);
+        this.router.navigate(['employee-profile']);
       }else if (user){
         this.router.navigate(['/verification-email']);
       }else {
