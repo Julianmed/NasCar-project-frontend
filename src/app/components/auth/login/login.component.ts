@@ -47,7 +47,6 @@ export class LoginComponent  {
 
   verifyOwner(){
     const dni = (<HTMLInputElement> document.getElementById('dni')).value;
-    console.log("ID del empleado",dni);
     this.ownerSrv.verifyId(dni).subscribe((validate: boolean) => {
       if(validate){
         console.log(validate);
@@ -57,9 +56,9 @@ export class LoginComponent  {
           let idOwner = data._id;
           console.log(email);
           console.log(idOwner);
-          let token = this.ownerSrv.createToken(email);
-          console.log("token", token);
-          
+          this.ownerSrv.createToken(email).subscribe((data)=>{
+            console.log("token: ",data);
+          });
         });
         //his.router.navigate(['state']);
 

@@ -28,9 +28,8 @@ export class OwnerService {
   }
 
   createToken(email: string): Observable<any>{
-    console.log(email);
-    this.http.post(this.OWNER_API+'/authCreate', email);
-    return
+    return this.http.get(this.OWNER_API+'/authCreate/'+email);
+
   }
 
   update(owner: any): Observable<any>{
