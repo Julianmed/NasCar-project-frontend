@@ -35,24 +35,20 @@ export class QuotationComponent implements OnInit {
     ) { }
 
   ngOnInit(){
-    this.sub = this.route.params.subscribe(params => {
-      console.log(params);
-      this.placa = params['placa'];
-      this.vehicleSrv.get(this.placa).subscribe((data:any) =>{
-        this.detailsQuotation = data.repairDetail;
-        console.log(data);
-        this.brand = data.brand;
-        this.color = data.color;
-        this.model = data.model;
-        this.type = data.type;
-        this.admissionDate = data.addmision.date;
-        this.technician = data.addmision.registeredBy;
-        this.details = data.repairDetail;
     if(this.authSvc.userAuthenticated()){
-      this.sub = this.route.params.subscribe(params => {
+      this.sub = this.route.params.subscribe((params) => {
+        console.log(params);
         this.placa = params['placa'];
         this.vehicleSrv.get(this.placa).subscribe((data:any) =>{
           this.detailsQuotation = data.repairDetail;
+          console.log(data);
+          this.brand = data.brand;
+          this.color = data.color;
+          this.model = data.model;
+          this.type = data.type;
+          this.admissionDate = data.addmision.date;
+          this.technician = data.addmision.registeredBy;
+          this.details = data.repairDetail;
         })
       })
     }
