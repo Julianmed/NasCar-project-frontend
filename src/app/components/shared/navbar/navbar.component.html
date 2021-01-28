@@ -8,17 +8,6 @@
   <!-- dropdown para mostrar las diferentes funcionalidades-->
     <div class="collapse navbar-collapse" id="navbarColor01">
       <div class="dropdown ml-lg-auto bg-black" >
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Funcionalidades
-        </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" routerLink="/human-res/alta-employee">Perfil de recursos humanos</a>
-          <a class="dropdown-item" routerLink="/manager/profile">Perfil asistente de gerencia</a>
-          <a class="dropdown-item" routerLink="/employee-profile">Perfil empleado</a>
-          <a class="dropdown-item" routerLink="/state">Estado vehículo</a>
-          <a class="dropdown-item" routerLink="/quotation/DLX668">Cotización</a>
-          
-        </div>
       </div>
       <ul class="navbar-nav ml-auto" *ngIf="user$ | async as user; else login">
         <li class="nav-item" *ngIf="user">
