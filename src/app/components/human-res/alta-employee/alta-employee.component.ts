@@ -26,6 +26,14 @@ export class AltaEmployeeComponent implements OnInit {
     if(!this.authSvc.userAuthenticated()){
       this.router.navigate(['home']);
     }
+    else{
+      const user = JSON.parse(localStorage.getItem('user'))[0];
+      this.employeeService.get(user.user.uid).subscribe((rol)=>{
+        if(!rol){
+          this.router.navigate(['home']);
+        }
+      });
+    }
   }
 
   updateEmployeePermit(){
