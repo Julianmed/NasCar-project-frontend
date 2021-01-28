@@ -19,7 +19,7 @@ export class EmployeeService {
     return this.http.get(this.EMPLOYEE_API + '/employee/' + id);
   }
 
-  getRol(userID: string){
+  getRol(userID: string):Observable<any>{
     return this.http.get(this.EMPLOYEE_API+'/employee/rol/'+userID);
   }
 
