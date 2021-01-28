@@ -39,7 +39,9 @@ export class EmployeeProfileComponent implements OnInit {
     if(this.authSvc.userAuthenticated()){
       this.employeeService.getRol(JSON.parse(localStorage.getItem('user'))[0].user.uid).subscribe((empleado: any) => {
         this.rol = empleado.rol;
-        console.log(empleado.rol);
+        console.log(empleado);
+        this.employeeId = empleado._id;
+        console.log(this.employeeId)
         this.nameEmployee = empleado.fname;
         this.lnameEmployee = empleado.lname;
         this.rolEmployee = empleado.rol;

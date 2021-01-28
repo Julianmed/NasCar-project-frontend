@@ -18,15 +18,11 @@
                 <label>{{emailEmployee}}</label>
                 
                 <br>
-            <button class="col btn btn-warning" routerLink="/employee-profile/edit/1040050070">Editar mi perfil</button>
+            <button class="col btn btn-warning" [routerLink]="['/employee-profile/edit/' + employeeId]">Editar mi perfil</button>
             <hr>
         </div>
     </div>
-<<<<<<< HEAD
 </div>
 <app-tasks *ngIf="rol == 'technician'"></app-tasks>
 <app-prof-manager-hr *ngIf="rol == 'HR assistant'"></app-prof-manager-hr>
 <app-profile-manager *ngIf="rol == 'Manager assistant'"></app-profile-manager>
-=======
-</div>
->>>>>>> 04e90e68d7d62db68903f00fdfde25f2e1fca72e
