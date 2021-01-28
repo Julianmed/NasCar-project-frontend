@@ -5,7 +5,8 @@
             <hr>
             <form (ngSubmit)="uploadPhoto()">
                 <input type="file" class="d-none" (change)="onPhotoSelected($event)" #photo>
-                <img [src]="photoSelected || '../../../../assets/icono-hombre.png'" alt="icono" class="icono" (click)="photo.click()">
+                <img [src]="photoSelected || '../../../../assets/icono-hombre.png' || photoEmployee " alt="icono" class="icono" (click)="photo.click()">
+                <button class="btn btn-warning btn-sm" type="submit">Guardar foto</button>
                 <hr>
                 <label><strong>Nombre completo</strong></label>
                 <br>
@@ -18,10 +19,10 @@
                 <label><strong>Correo electrónico</strong></label>
                 <br>
                 <label>{{emailEmployee}}</label>
-                <button class="col btn btn-warning" type="submit">Guardar foto de perfil</button>
+                
                 <br>
             </form>
-
+            <button class="col btn btn-warning" routerLink="/employee-profile/edit/1040050070">Editar mi perfil</button>
             <hr>
         </div>
     </div>

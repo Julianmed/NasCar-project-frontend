@@ -7,18 +7,10 @@
                 <div class="form-group">
                     <h3 class="text-center">Mi perfil</h3>
                     <hr>
-                    <div class="row">
-                        <div class="col">
-                            <label for="photo"><strong>Mi foto de perfil</strong></label>
-                            <input type="file" [(ngModel)]="employee.photo" class="form-control" accept=".jpg, .png, .jpeg, .gif" name="photo">
-                            <br>
-
+                    <div class="form-group">
                             <label for="email"><strong>Email</strong></label>
                             <input type="email" [(ngModel)]="employee.email" class="form-control" name="email" required="true">
-                            <br>                         
-
-                        </div>
-                        <div class="col">
+                            <br>
                             <label for="fname"><strong>Nombre</strong></label>
                             <input type="text" [(ngModel)]="employee.fname" class="form-control" name="fname" required="true">
                             <br>   
@@ -30,15 +22,12 @@
                             <label for="cellphone"><strong>Celular</strong></label>
                             <input type="tel" [(ngModel)]="employee.cellphone" class="form-control" name="cellphone" required="true">
                             <br>
-
-                        </div>
                     </div>
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
                     <a class="btn btn-danger" routerLink="/employee-profile">Cancelar actualizacion</a>
                     <button class="btn btn-success" type="submit">Actualizar perfil</button>
-                </div>                
-                <hr>
+                </div> 
             </form>            
             <hr>
         </div>
