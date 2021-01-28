@@ -118,7 +118,7 @@ export class EditEmployeeProfileComponent implements OnInit {
             alert(data.message);
           }
         }); 
-      this.router.navigate(['/employee-profile/'+ this.employeeId]);     
+      this.router.navigate(['/employee-profile']);     
     }else if(!photo){
       this.employeeService.updateEmployee(fname, lname, cellphone, landline, this.employeeId)
         .subscribe((data) =>{
@@ -127,12 +127,12 @@ export class EditEmployeeProfileComponent implements OnInit {
             alert("Se ha actualizado el perfil con exito.");
           }else{          
             alert(data.message);
-            this.router.navigate(['/employee-profile/'+ this.employeeId]);
+            this.router.navigate(['/employee-profile']);
           }
         }); 
     }else{
       alert("No ha realizado ninguna actualizado");
-      this.router.navigate(['/employee-profile/'+ this.employeeId]);
+      this.router.navigate(['/employee-profile']);
     }
   }
 
