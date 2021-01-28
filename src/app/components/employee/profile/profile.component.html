@@ -3,10 +3,7 @@
         <div class="container text-center">
             <h4 class="text-center mt-4 text-uppercase">Perfil de <strong>{{nameEmployee}} {{lnameEmployee}}</strong></h4>
             <hr>
-            <form (ngSubmit)="uploadPhoto()">
-                <input type="file" class="d-none" (change)="onPhotoSelected($event)" #photo>
-                <img [src]="photoSelected || '../../../../assets/icono-hombre.png' || photoEmployee " alt="icono" class="icono" (click)="photo.click()">
-                <button class="btn btn-warning btn-sm" type="submit">Guardar foto</button>
+                <img [src]="photoSelected || '../../../../assets/icono-hombre.png'" alt="icono" class="icono">
                 <hr>
                 <label><strong>Nombre completo</strong></label>
                 <br>
@@ -21,10 +18,8 @@
                 <label>{{emailEmployee}}</label>
                 
                 <br>
-            </form>
             <button class="col btn btn-warning" routerLink="/employee-profile/edit/1040050070">Editar mi perfil</button>
             <hr>
         </div>
     </div>
 </div>
-<app-tasks></app-tasks>
