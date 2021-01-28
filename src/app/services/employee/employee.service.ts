@@ -27,8 +27,11 @@ export class EmployeeService {
     return this.http.post(this.EMPLOYEE_API, employee);
   }
 
-  updateEmployee(employee: any) {
-    return this.http.put(this.EMPLOYEE_API + '/employee/' + employee._id, employee);
+  updateEmployee(fname:string, lname:string, cellphone:string, landline:string, id: string) {
+    let result: Observable<any>;
+    console.log(this.http.put(this.EMPLOYEE_API + '/employee/' + id, {fname, lname, cellphone, landline}));
+    result = this.http.put(this.EMPLOYEE_API + '/employee/' + id, {fname, lname, cellphone, landline});
+    return result;
   }
 
   deleteEmployee (employee:any) {
@@ -46,8 +49,10 @@ export class EmployeeService {
     let result: Observable<any>;
     const fd = new FormData();
     fd.append('image',photo);
+    console.log("UPDATEPHOTO PHOTO",photo)
+    console.log(id);
     result = this.http.put(this.EMPLOYEE_API + "/" + id, fd);
-    console.log(result);
+    console.log("UPDATEPHOTO",result);
     return result;
     
   }
