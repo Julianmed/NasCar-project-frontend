@@ -27,15 +27,12 @@ export class StateComponent implements OnInit {
     }
 
   ngOnInit(){
-    if(this.authSvc.userAuthenticated()){
-      this.route.queryParams.subscribe(params => {
-        this.token = params['params'];
-        console.log("Este es el token",this.token);
-      });
-    }
-    else{
-      this.router.navigate(['home']);
-    }
+    this.route.params.subscribe(params => {
+      if(params.token){
+        this.token = params.token;
+        localStorage.setItem('credential',JSON.stringify([this.token]));
+      }
+    });
   }
 
   getData() {

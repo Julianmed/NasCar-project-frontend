@@ -42,7 +42,6 @@ export class CreateEmployeeComponent implements OnInit {
     else{
       const user = JSON.parse(localStorage.getItem('user'))[0];
       this.employeeService.getRol(user.user.uid).subscribe((empleado:any)=>{
-        console.log("empleado: ",empleado.rol);
         if(empleado.rol=='technician'){
           this.router.navigate(['tasks/'+empleado._id]);
         }
@@ -53,7 +52,7 @@ export class CreateEmployeeComponent implements OnInit {
     }
   }
 
-  registerEmployee(values){
+  registerEmployee(){
     console.log(this.formCreateEmployee.value);
     this.employeeService.createEmployee(this.formCreateEmployee.value).subscribe(result => {
       console.log(result);

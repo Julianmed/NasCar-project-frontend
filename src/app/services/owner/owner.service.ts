@@ -27,9 +27,9 @@ export class OwnerService {
     return this.http.get(this.OWNER_API + '/verifyOwner/' + dni);
   }
 
-  createToken(token): Observable<any>{
-    this.http.post(this.OWNER_API+'/token/', token);
-    return
+  createToken(email: string): Observable<any>{
+    return this.http.get(this.OWNER_API+'/authCreate/'+email);
+
   }
 
   update(owner: any): Observable<any>{

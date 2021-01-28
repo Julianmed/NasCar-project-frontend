@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { VehicleService } from '@app/services/vehicle/vehicle.service';
 import { AuthService } from '@app/services/auth/auth.service';
 import { OwnerService } from '@app/services/owner/owner.service';
@@ -19,7 +19,6 @@ export class TasksComponent implements OnInit {
   constructor(
     private vehicleSrv:VehicleService, 
     private router: Router,
-    private route: ActivatedRoute,
     private ownerSrv: OwnerService,
     private authSvc: AuthService,
     private employeeService: EmployeeService
@@ -29,7 +28,6 @@ export class TasksComponent implements OnInit {
     if(this.authSvc.userAuthenticated()){
       const user = JSON.parse(localStorage.getItem('user'))[0];
       this.employeeService.getRol(user.user.uid).subscribe((empleado:any)=>{
-        console.log("empleado: ",empleado.rol);
         if(empleado.rol=='Manager assistant'){
           this.router.navigate(['manager/profile']);
         }
@@ -49,7 +47,6 @@ export class TasksComponent implements OnInit {
       alert("Para editar un propietario es necesario que ingrese un documento de identidad.")
     }
     else{
-      console.log("dni",dni)
       this.ownerSrv.verifyId(dni).subscribe((validate: boolean)=>{
         if(validate){
           this.router.navigate(['mechanic/owner/edit/'+dni]);
@@ -67,7 +64,6 @@ export class TasksComponent implements OnInit {
       alert("Para editar un vehículo es necesario que ingrese una placa.")
     }
     else{
-      console.log("placa",this.placa)
       this.vehicleSrv.verifyPlaca(this.placa).subscribe((validate: boolean)=>{
         if(validate){
           this.router.navigate(['mechanic/vehicle/edit/'+this.placa]);
@@ -81,7 +77,6 @@ export class TasksComponent implements OnInit {
 
   updateVehicleStatus(){
     this.state = (<HTMLInputElement> document.getElementById('state')).value;
-    console.log("state: ",this.state)
     this.vehicleSrv.updateStatus(this.state, this.placa).subscribe((data)=>{
       alert(data);
     });
@@ -89,7 +84,6 @@ export class TasksComponent implements OnInit {
 
   getModal(){
     this.placa = (<HTMLInputElement> document.getElementById('placaId')).value;
-    console.log("placa: ",this.placa)
     if(!this.placa){
       alert("ingrese una placa válida por favor")
       this.status = 0;

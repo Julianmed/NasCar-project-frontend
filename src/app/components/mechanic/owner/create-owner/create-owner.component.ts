@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
+import { FormGroup, Validators, FormBuilder} from '@angular/forms';
 import { OwnerService } from 'src/app/services/owner/owner.service';
 import { AuthService } from '@app/services/auth/auth.service';
 import { EmployeeService } from '@app/services/employee/employee.service';
@@ -40,7 +40,6 @@ export class CreateOwnerComponent implements OnInit {
     else{
       const user = JSON.parse(localStorage.getItem('user'))[0];
       this.employeeService.getRol(user.user.uid).subscribe((empleado:any)=>{
-        console.log("empleado: ",empleado.rol);
         if(empleado.rol=='Manager assistant'){
           this.router.navigate(['manager/profile']);
         }

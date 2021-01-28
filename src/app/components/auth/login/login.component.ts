@@ -47,10 +47,22 @@ export class LoginComponent  {
 
   verifyOwner(){
     const dni = (<HTMLInputElement> document.getElementById('dni')).value;
-    console.log(dni);
     this.ownerSrv.verifyId(dni).subscribe((validate: boolean) => {
       if(validate){
-        this.router.navigate(['state']);
+        console.log(validate);
+        this.ownerSrv.get(dni).subscribe((data: any) => {
+          console.log(data);
+          let email = data.email;
+          let idOwner = data._id;
+          console.log(email);
+          console.log(idOwner);
+          this.ownerSrv.createToken(email).subscribe((data)=>{
+            console.log("token: ",data);
+          });
+        });
+        //his.router.navigate(['state']);
+
+        
       }
       else{
         alert("Documento de identidad no válido")

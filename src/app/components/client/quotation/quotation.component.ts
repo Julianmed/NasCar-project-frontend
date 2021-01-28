@@ -30,12 +30,11 @@ export class QuotationComponent implements OnInit {
   constructor( 
     private vehicleSrv: VehicleService,
     private route: ActivatedRoute,
-    private router: Router,
-    private authSvc: AuthService
+    private router: Router
     ) { }
 
   ngOnInit(){
-    if(this.authSvc.userAuthenticated()){
+    if(JSON.parse(localStorage.getItem('credential'))[0]){
       this.sub = this.route.params.subscribe((params) => {
         console.log(params);
         this.placa = params['placa'];

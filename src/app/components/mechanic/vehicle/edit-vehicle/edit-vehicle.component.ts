@@ -27,7 +27,6 @@ export class EditVehicleComponent implements OnInit {
     if(this.authSvc.userAuthenticated()){
       const user = JSON.parse(localStorage.getItem('user'))[0];
       this.employeeService.getRol(user.user.uid).subscribe((empleado:any)=>{
-        console.log("empleado: ",empleado.rol);
         if(empleado.rol=='Manager assistant'){
           this.router.navigate(['manager/profile']);
         }
@@ -41,7 +40,6 @@ export class EditVehicleComponent implements OnInit {
               this.vehicleService.get(id).subscribe((vehicle: any) =>{
                 if(vehicle) {
                   this.vehicle = vehicle;
-                  console.log("vehicle: ", vehicle)
                 }else{
                   console.log('vehicle no found.')
                 }
@@ -57,10 +55,9 @@ export class EditVehicleComponent implements OnInit {
   }
 
   updateVehicle(form: NgForm){
-    console.log("el vehicle es: ",form);
     this.vehicleService.updateVehicle(form, this.vehicle).subscribe(result =>{
       console.log(result);
     });
-    this.router.navigate(['tasks']);
+    this.router.navigate(['employee-profile']);
   }
 }

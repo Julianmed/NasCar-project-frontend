@@ -1,5 +1,4 @@
 import { Component, OnInit, ViewChild} from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '@app/services/auth/auth.service';
 import { VehicleService } from '@app/services/vehicle/vehicle.service';
@@ -38,7 +37,6 @@ export class RepairDetailComponent implements OnInit {
     if(this.authSvc.userAuthenticated()){
       const user = JSON.parse(localStorage.getItem('user'))[0];
       this.employeeService.getRol(user.user.uid).subscribe((empleado:any)=>{
-        console.log("empleado: ",empleado.rol);
         if(empleado.rol=='Manager assistant'){
           this.router.navigate(['manager/profile']);
         }
@@ -57,7 +55,6 @@ export class RepairDetailComponent implements OnInit {
     if(plateLicense != ''){
       this.vehSvc.get(plateLicense).subscribe((vehicle: any)=>{
         if(vehicle){
-          console.log("vehicle ",vehicle);
           this.vehicle = vehicle;
           this.brand = vehicle.brand;
           this.model = vehicle.model;
