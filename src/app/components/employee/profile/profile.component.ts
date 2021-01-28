@@ -26,7 +26,7 @@ export class EmployeeProfileComponent implements OnInit {
   file: File;
   photoSelected: ArrayBuffer | string;
   photoEmployee: ArrayBuffer | string;
-
+  rol: any;
   photos = [];
 
   constructor(private router: Router,
@@ -37,20 +37,15 @@ export class EmployeeProfileComponent implements OnInit {
 
   ngOnInit(){
     if(this.authSvc.userAuthenticated()){
-      this.sub = this.route.params.subscribe(params => {
-        console.log(params);
-        this.employeeId = params['id'];
-        console.log(this.employeeId);
-        this.employeeService.get(this.employeeId).subscribe((data: any) => {
-          console.log(data);
-          this.nameEmployee = data.fname;
-          this.lnameEmployee = data.lname;
-          this.rolEmployee = data.rol;
-          this.emailEmployee = data.email;
-          this.photoEmployee = data.photo;
-          console.log(this.photoEmployee);
-        })
-      });
+      this.employeeService.getRol(JSON.parse(localStorage.getItem('user'))[0].user.uid).subscribe((empleado: any) => {
+        this.rol = empleado.rol;
+        console.log(empleado.rol);
+        this.nameEmployee = empleado.fname;
+        this.lnameEmployee = empleado.lname;
+        this.rolEmployee = empleado.rol;
+        this.emailEmployee = empleado.email;
+        this.photoEmployee = empleado.photo;
+      })
     }
     else{
       this.router.navigate(['home']);

@@ -27,4 +27,6 @@
         </div>
     </div>
 </div>
-<app-tasks></app-tasks>
+<app-tasks *ngIf="rol == 'technician'"></app-tasks>
+<app-prof-manager-hr *ngIf="rol == 'HR assistant'"></app-prof-manager-hr>
+<app-profile-manager *ngIf="rol == 'Manager assistant'"></app-profile-manager>

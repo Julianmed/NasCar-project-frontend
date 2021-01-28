@@ -108,7 +108,7 @@ const routes: Routes = [
     component: CreateEmployeeComponent,
   },
   {
-    path: 'employee-profile/:id', //debería recibir la id del perfil según el logging
+    path: 'employee-profile', //debería recibir la id del perfil según el logging
     component: EmployeeProfileComponent,
   },
   {
