@@ -7,8 +7,8 @@ import { HttpClient } from '@angular/common/http';
 })
 export class EmployeeService {
 
-  public EMPLOYEE_API = 'https://nascar-backend.herokuapp.com/api/employees';
-  //public EMPLOYEE_API = 'http://localhost:3000/api/employees';
+  //public EMPLOYEE_API = 'https://nascar-backend.herokuapp.com/api/employees';
+  public EMPLOYEE_API = 'http://localhost:3000/api/employees';
   constructor(private http: HttpClient) { }
 
   getAll(): Observable<any>{

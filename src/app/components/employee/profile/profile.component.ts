@@ -25,7 +25,7 @@ export class EmployeeProfileComponent implements OnInit {
   emailEmployee:string;
   file: File;
   photoSelected: ArrayBuffer | string;
-  photoEmployee:string;
+  photoEmployee: ArrayBuffer | string;
 
   photos = [];
 

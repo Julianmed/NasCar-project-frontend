@@ -5,8 +5,8 @@ import { getLocaleDateFormat, getLocaleDateTimeFormat } from '@angular/common';
 
 @Injectable({providedIn: 'root'})
 export class VehicleService {
-  //public VEHICLE_API = 'https://nascar-backend.herokuapp.com/api/vehicles';
-  public VEHICLE_API = 'http://localhost:3000/api/vehicles'
+  public VEHICLE_API = 'https://nascar-backend.herokuapp.com/api/vehicles';
+  //public VEHICLE_API = 'http://localhost:3000/api/vehicles'
   constructor(private http: HttpClient) {
   }
 
